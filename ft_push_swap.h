@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 17:49:39 by cperales          #+#    #+#             */
-/*   Updated: 2026/05/28 10:36:20 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/05/30 01:15:42 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ typedef struct s_stack_node
 	int					push_cost;
 	bool				has_been_lowest;
 	bool				above_median;
+	bool				bench;
+	bool				parse;
 /* 	bool				cheapest; */
 	struct s_stack_node	*target_node;
 	struct s_stack_node	*next;
@@ -44,27 +46,27 @@ typedef struct			s_benchmark
 	unsigned short		nrrb;
 }						t_benchmark;
 
-t_stack_node			*find_last(t_stack_node *stack);
-int						stack_len(t_stack_node *stack);
-bool					stack_sorted(t_stack_node *stack);
+t_stack_node	*find_last(t_stack_node *stack);
+int				stack_len(t_stack_node *stack);
+bool			stack_sorted(t_stack_node *stack);
 
-void					pa(t_stack_node **a, t_stack_node **b, bool print);
-void					pb(t_stack_node **b, t_stack_node **a, bool print);
+void			pa(t_stack_node **a, t_stack_node **b, bool print, t_benchmark *count);
+void			pb(t_stack_node **b, t_stack_node **a, bool print, t_benchmark *count);
 
-void					sa(t_stack_node **a, bool print);
-void					sb(t_stack_node **b, bool print);
-void					ss(t_stack_node **a, t_stack_node **b, bool print);
+void			sa(t_stack_node **a, bool print, t_benchmark *count);
+void			sb(t_stack_node **b, bool print, t_benchmark *count);
+void			ss(t_stack_node **a, t_stack_node **b, bool print, t_benchmark *count);
 
-void					ra(t_stack_node **a, bool print);
-void					rb(t_stack_node **b, bool print);
-void					rr(t_stack_node **a, t_stack_node **b, bool print);
+void			ra(t_stack_node **a, bool print, t_benchmark *count);
+void			rb(t_stack_node **b, bool print, t_benchmark *count);
+void			rr(t_stack_node **a, t_stack_node **b, bool print, t_benchmark *count);
 
-void					rra(t_stack_node **a, bool print);
-void					rrb(t_stack_node **b, bool print);
-void					rrr(t_stack_node **a, t_stack_node **b, bool print);
+void			rra(t_stack_node **a, bool print, t_benchmark *count);
+void			rrb(t_stack_node **b, bool print, t_benchmark *count);
+void			rrr(t_stack_node **a, t_stack_node **b, bool print, t_benchmark *count);
 
-int						ft_syntax_error(char *str);
-int						ft_duplicate_error(t_stack_node *a, int n);
+int				ft_syntax_error(char *str);
+int				ft_duplicate_error(t_stack_node *a, int n);
 void					free_stack(t_stack_node **stack);
 void					free_errors(t_stack_node **a);
 
@@ -86,6 +88,6 @@ void					ft_move_node_to_top(t_stack_node **stack,
 
 void					ft_turk(t_stack_node **a, t_stack_node **b);
 void					ft_target_to_top(t_stack_node **stack,
-							t_stack_node *top_node, char stackName);
+						t_stack_node *top_node, char stackName);
 
 #endif

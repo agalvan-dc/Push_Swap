@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 07:50:55 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/05/28 11:21:40 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/05/29 17:05:23 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	ft_ksort(t_stack_node *a, t_stack_node *b, t_benchmark *count)
 			rb(b, 1, count);
 		}
 		else if (a->index > ft_stacksize(b))
-			pb(a, b, count);
+			pb(a, b, 1, count);
 		else
 			ra(a, 1, count);
 	}

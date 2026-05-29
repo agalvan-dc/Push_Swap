@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 22:57:25 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/05/28 00:37:04 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/05/30 01:22:29 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,10 @@ float	ft_disorder_tendency(char **argv)
 	else if (ft_strlen(*argv) == 2)
 		return (ft_check_arg_args(**argv));
 	return (-1);
+}
+ft_dissorder(t_stack_node *a)
+{
+
+
+	
 }
