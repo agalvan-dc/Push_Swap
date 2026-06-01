@@ -30,6 +30,7 @@ void	ra(t_stack_node **a, bool print, t_benchmark *count)
 {
 	rotate(a);
 	count->nra += 1;
+	count->total += 1;
 	if (!print)
 		ft_printf("ra\n");
 }
@@ -38,6 +39,7 @@ void	rb(t_stack_node **b, bool print, t_benchmark *count)
 {
 	rotate(b);
 	count->nrb += 1;
+	count->total += 1;
 	if (!print)
 		ft_printf("rb\n");
 }
@@ -47,6 +49,7 @@ void	rr(t_stack_node **a, t_stack_node **b, bool print, t_benchmark *count)
 	rotate(a);
 	rotate(b);
 	count->nrr += 1;
+	count->total += 1;
 	if (!print)
 		ft_printf("rr\n");
 }

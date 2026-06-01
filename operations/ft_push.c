@@ -89,6 +89,7 @@ void	pa(t_stack_node **a, t_stack_node **b, bool print, t_benchmark *count) // p
 {
 	push(b, a);
 	count->npa += 1;
+	count->total += 1;
 	if (!print)
 		ft_printf("pa\n");
 }
@@ -97,6 +98,7 @@ void	pb(t_stack_node **b, t_stack_node **a, bool print, t_benchmark *count) // p
 {
 	push(a, b);
 	count->npb += 1;
+	count->total += 1;
 	if (!print)
 		ft_printf("pb\n");
 }

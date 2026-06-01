@@ -12,12 +12,12 @@
 
 #include "ft_push_swap.h"
 
-int	ft_check_args(char **argv)
+int	ft_check_args(char **argv) //checkear
 {
 	size_t	i;
 
-	i = 0;
-	while (i <= ft_strlen(*argv))
+	i = 1;
+	while (i <= ft_strlen(*argv) - 1)
 	{
 		if (!(ft_isdigit(argv[i][0])))
 			return (0);
@@ -65,7 +65,11 @@ int	ft_check_all(char **argv)
 	size_t	i;
 
 	i = 3;
-	if (!ft_check_mode(argv[1]) || !ft_check_mode(argv[2]))
+	if (!ft_strnmp(argv[1], argv[2], ft_strlen(argv[1])))
+		return (0);
+	else if (!ft_check_mode(argv[1]) && (!ft_isdigit(argv[1]) || !ft_check_args(argv)))
+		return (0);
+	else if (!ft_check_mode(argv[2]) && (!ft_isdigit(argv[2]) || !ft_check_args(argv)))
 		return (0);
 	while (i < ft_strlen(*argv) - 3)
 	{

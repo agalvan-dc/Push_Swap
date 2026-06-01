@@ -44,6 +44,7 @@ typedef struct			s_benchmark
 	unsigned short		nrr;
 	unsigned short		nrra;
 	unsigned short		nrrb;
+	unsigned short		total;
 }						t_benchmark;
 
 t_stack_node	*find_last(t_stack_node *stack);

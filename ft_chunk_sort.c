@@ -74,12 +74,14 @@ int	cost_to_top(t_stack_node *a)
 	return (i);
 }
 
-void	ft_chunk_sort(t_stack_node *a, t_stack_node *b, t_benchmark *count)
+void	ft_chunk_sort(t_stack_node *a, t_stack_node *b, int n, t_benchmark *count)
 {
-	int	chunk_ranges;
-	int	hold_first;
-	int	hold_second;
+	int		chunk_ranges;
+	int		hold_first;
+	int		hold_second;
+	float	dt;
 
+	dt = ft_dissorder(a);
 	put_indexes(a);
 	chunk_ranges = stack_len(a) / 5;
 	if (cost_of_push_on_first(a, chunk_ranges, &hold_first)
@@ -87,5 +89,7 @@ void	ft_chunk_sort(t_stack_node *a, t_stack_node *b, t_benchmark *count)
 		move_first_to_top(a, hold_first, count);
 	else
 		move_second_to_top(a, hold_second, count);
-
+	if (a->bench)
+		ft_bench(dt, n, count);
+	ft_free_all(a, b);
 }

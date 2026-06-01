@@ -51,7 +51,7 @@ void	ft_lowest_on_b(t_stack_node *a, t_stack_node *b, t_benchmark *count)
 	}
 }
 
-void	ft_simple_sort(t_stack_node *a, t_stack_node *b, t_benchmark count)
+void	ft_simple_sort(t_stack_node *a, t_stack_node *b, int n, t_benchmark count)
 {
 	float	dt;
 
@@ -63,5 +63,6 @@ void	ft_simple_sort(t_stack_node *a, t_stack_node *b, t_benchmark count)
 		a = a->next;
 	}
 	if (a->bench)
-		ft_bench(dt, count);
+		ft_bench(dt, n, count);
+	ft_free_all(a, b);
 }

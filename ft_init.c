@@ -83,5 +83,6 @@ t_benchmark	ft_init_bench(void)
 	count.nrr = 0;
 	count.nrra = 0;
 	count.nrrb = 0;
+	count.total = 0;
 	return (count);
 }

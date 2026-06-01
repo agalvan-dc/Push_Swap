@@ -39,7 +39,6 @@ bool ft_above_median(t_stack_node *a)
 
 void	ft_arrange(t_stack_node *a, t_stack_node *b, t_benchmark *count)
 {
-	
 	while (b)
 	{
 		ft_move_node_to_top(find_max(b), ft_above_median(b));
@@ -48,11 +47,13 @@ void	ft_arrange(t_stack_node *a, t_stack_node *b, t_benchmark *count)
 	}
 }
 
-void	ft_ksort(t_stack_node *a, t_stack_node *b, t_benchmark *count)
+void	ft_ksort(t_stack_node *a, t_stack_node *b, int n, t_benchmark *count)
 {
 	int				k;
+	float			dt;
 	t_stack_node	*current;
 
+	dt = ft_dissorder(a);
 	k = ft_sqrt(ft_stacksize(a)) * 4.12;
 	ft_current_index(a);
 	current = a;
@@ -70,4 +71,7 @@ void	ft_ksort(t_stack_node *a, t_stack_node *b, t_benchmark *count)
 			ra(a, 1, count);
 	}
 	ft_arrange(a, b, count);
+	if (a->bench)
+		ft_bench(dt, n, count);
+	ft_free_all(a, b); //preguntar a caperale
 }

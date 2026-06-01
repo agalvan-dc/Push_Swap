@@ -30,6 +30,7 @@ void	sa(t_stack_node **a, bool print, t_benchmark *count)
 {
 	swap(a);
 	count->nsa += 1;
+	count->total += 1;
 	if (!print)
 		ft_printf("sa\n");
 }
@@ -38,6 +39,7 @@ void	sb(t_stack_node **b, bool print, t_benchmark *count)
 {
 	swap(b);
 	count->nsb += 1;
+	count->total += 1;
 	if (!print)
 		ft_printf("sb\n");
 }
@@ -47,6 +49,7 @@ void	ss(t_stack_node **a, t_stack_node **b, bool print, t_benchmark *count)
 	swap(a);
 	swap(b);
 	count->nss += 1;
+	count->total += 1;
 	if (!print)
 		ft_printf("ss\n");
 }
