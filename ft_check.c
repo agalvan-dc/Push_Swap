@@ -53,9 +53,9 @@ int	ft_check_mode(char *argv)
 		return (1);
 	if (!ft_strncmp(argv, "--medium", ft_strlen(argv)))
 		return (1);
-		if (!ft_strncmp(argv, "--complex", ft_strlen(argv)))
+	if (!ft_strncmp(argv, "--complex", ft_strlen(argv)))
 		return (1);
-		if (!ft_strncmp(argv, "--adaptive", ft_strlen(argv)))
+	if (!ft_strncmp(argv, "--adaptive", ft_strlen(argv)))
 		return (1);
 	return (0);
 }
