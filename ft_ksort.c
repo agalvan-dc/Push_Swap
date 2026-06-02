@@ -6,18 +6,18 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 07:50:55 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/05/29 17:05:23 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/02 21:29:54 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_push_swap.c"
+#include "ft_push_swap.h"
 
-bool ft_above_median(t_stack_node *a)
+bool	ft_above_median(t_node *a)
 {
-	t_stack_node	*aux;
+	t_node			*aux;
 	int				push_cost_up;
 	int				push_cost_down;
-	
+
 	aux = a;
 	push_cost_down = 0;
 	push_cost_up = 0;
@@ -36,42 +36,39 @@ bool ft_above_median(t_stack_node *a)
 	return (true);
 }
 
-
-void	ft_arrange(t_stack_node *a, t_stack_node *b, t_benchmark *count)
+void	ft_arrange(t_node *a, t_node *b, t_benchmark *count)
 {
 	while (b)
 	{
-		ft_move_node_to_top(find_max(b), ft_above_median(b));
-		pa(a, b, 1, count);
+		ft_move_node_to_top(find_max(b), ft_above_median(b), count);
+		pa(&a, &b, 1, count);
 		b = b->next;
 	}
 }
 
-void	ft_ksort(t_stack_node *a, t_stack_node *b, int n, t_benchmark *count)
+void	ft_ksort(t_node *a, t_node *b, int n, t_benchmark *count)
 {
-	int				k;
-	float			dt;
-	t_stack_node	*current;
+	int		k;
+	t_node	*current;
 
-	dt = ft_dissorder(a);
 	k = ft_sqrt(ft_stacksize(a)) * 4.12;
-	ft_current_index(a);
+	//ft_current_index(a);
 	current = a;
 	while (current)
 	{
 		current = a->next;
 		if (a->index > ft_stacksize(b) + k)
 		{
-			pb(a, b, 1, count);
-			rb(b, 1, count);
+			pb(&a, &b, 1, count);
+			rb(&b, 1, count);
 		}
 		else if (a->index > ft_stacksize(b))
-			pb(a, b, 1, count);
+			pb(&a, &b, 1, count);
 		else
-			ra(a, 1, count);
+			ra(&a, 1, count);
 	}
 	ft_arrange(a, b, count);
 	if (a->bench)
-		ft_bench(dt, n, count);
-	ft_free_all(a, b); //preguntar a caperale
+		ft_bench(n, count);
+	ft_free_all(a, b);
 }

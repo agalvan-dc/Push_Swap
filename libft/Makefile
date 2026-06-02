@@ -6,7 +6,7 @@
 #    By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/19 15:46:47 by caperale          #+#    #+#              #
-#    Updated: 2026/05/28 08:00:19 by agalvan-         ###   ########.fr        #
+#    Updated: 2026/06/02 20:33:41 by agalvan-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,6 @@ SOURCES =  \
 	ft_lstnew.c \
 	ft_lstadd_front.c \
 	ft_lstsize.c \
-	ft_lstlast.c \
 	ft_lstadd_back.c \
 	ft_lstdelone.c \
 	ft_lstclear.c \

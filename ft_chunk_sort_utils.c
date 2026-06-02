@@ -6,14 +6,31 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 07:41:45 by caperale          #+#    #+#             */
-/*   Updated: 2026/05/28 10:12:46 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/02 19:48:27 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-void	prepare_b_for_push(t_stack_node *b)
+void	ft_move_node_to_top(t_node *a, bool above_median, t_benchmark *count)
 {
-	if (b)
-		ft_move_node_to_top(find_min(b), TRUE);
+	t_node	*current;
+
+	current = a;
+	if (above_median == true)
+	{
+		while (current)
+		{
+			ra(&a, 1, count);
+			current = current->prev;
+		}
+	}
+	else if (above_median == false)
+	{
+		while (current)
+		{
+			rra(&a, 1, count);
+			current = current->next;
+		}
+	}
 }

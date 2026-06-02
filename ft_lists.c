@@ -6,17 +6,17 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 05:59:39 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/05/30 01:15:35 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/02 23:35:23 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-t_stack_node *ft_stacknew(void *content, bool bench)
+t_node	*ft_stacknew(int content, bool bench)
 {
-	t_stack_node *node;
+	t_node	*node;
 
-	node = malloc(sizeof(t_stack_node *));
+	node = malloc(sizeof(t_node*));
 	if (!node)
 		return (NULL);
 	node->nbr = content;
@@ -28,36 +28,39 @@ t_stack_node *ft_stacknew(void *content, bool bench)
 	node->next = NULL;
 	node->prev = NULL;
 	node->push_cost = 0;
-	node->target_node = NULL; 
-	return(node);
+	node->target_node = NULL;
+	return (node);
 }
-t_stack_node *ft_stackadd_last(t_stack_node **stack, t_stack_node *last)
+
+t_node	*ft_stackadd_back(t_node **stack, t_node *last)
 {
-	t_stack_node *cur;
+	t_node	*cur;
 
 	if (!stack || !last)
-		return ;
+		return (NULL);
 	cur = *stack;
 	if (!*stack)
 	{
 		*stack = last;
-		return ;
+		return (*stack);
 	}
 	while (cur->next)
 		cur = cur->next;
 	cur->next = last;
-	return ;
+	return (last);
 }
-t_stack_node *ft_lstlast(t_stack_node *node)
+
+t_node	*ft_lstlast(t_node *node)
 {
 	while (node && node->next)
 		node = node->next;
 	return (node);
 }
-int	ft_stacksize(t_stack_node *node)
+
+int	ft_stacksize(t_node *node)
 {
-	t_stack_node *cur;
-	int	i;
+	t_node		*cur;
+	size_t		i;
 
 	i = 0;
 	cur = node;
@@ -66,5 +69,15 @@ int	ft_stacksize(t_stack_node *node)
 		++i;
 		cur = cur->next;
 	}
+	return (i);
+}
+
+size_t	ft_argv_len(char **argv)
+{
+	size_t	i;
+
+	i = 0;
+	while (argv[i])
+		i++;
 	return (i);
 }

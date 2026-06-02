@@ -3,45 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cperales <cperales@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 22:00:45 by cperales          #+#    #+#             */
-/*   Updated: 2025/05/26 00:30:30 by cperales         ###   ########.fr       */
+/*   Updated: 2026/06/02 21:37:30 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_push_swap.h"
+#include "ft_push_swap.h"
 
-int	execute_operation(char *op, t_stack_node **a, t_stack_node **b)
+int	ft_execute_operation(char *op, t_node **a, t_node **b, t_benchmark *count)
 {
 	if (!ft_strncmp(op, "sa", 3))
-		sa(a, true);
+		sa(a, true, count);
 	else if (!ft_strncmp(op, "sb", 3))
-		sb(b, true);
+		sb(b, true, count);
 	else if (!ft_strncmp(op, "ss", 3))
-		ss(a, b, true);
+		ss(a, b, true, count);
 	else if (!ft_strncmp(op, "pa", 3))
-		pa(a, b, true);
+		pa(a, b, true, count);
 	else if (!ft_strncmp(op, "pb", 3))
-		pb(b, a, true);
+		pb(b, a, true, count);
 	else if (!ft_strncmp(op, "ra", 3))
-		ra(a, true);
+		ra(a, true, count);
 	else if (!ft_strncmp(op, "rb", 3))
-		rb(b, true);
+		rb(b, true, count);
 	else if (!ft_strncmp(op, "rr", 3))
-		rr(a, b, true);
+		rr(a, b, true, count);
 	else if (!ft_strncmp(op, "rra", 4))
-		rra(a, true);
+		rra(a, true, count);
 	else if (!ft_strncmp(op, "rrb", 4))
-		rrb(b, true);
+		rrb(b, true, count);
 	else if (!ft_strncmp(op, "rrr", 4))
-		rrr(a, b, true);
+		rrr(a, b, true, count);
 	else
 		return (0);
 	return (1);
 }
 
-int	is_sorted(t_stack_node *a)
+int	ft_is_sorted(t_node *a)
 {
 	while (a && a->next)
 	{
@@ -52,7 +52,7 @@ int	is_sorted(t_stack_node *a)
 	return (1);
 }
 
-void	clear_stdin_line(void)
+void	ft_clear_stdin_line(void)
 {
 	char	ch;
 
@@ -60,7 +60,7 @@ void	clear_stdin_line(void)
 		;
 }
 
-void	read_opps(t_stack_node **a, t_stack_node **b)
+void	ft_read_opps(t_node **a, t_node **b, t_benchmark *count)
 {
 	char	buffer[5];
 	int		read_ret;
@@ -73,7 +73,7 @@ void	read_opps(t_stack_node **a, t_stack_node **b)
 		buffer[read_ret] = '\0';
 		if (read_ret > 0 && buffer[read_ret - 1] == '\n')
 			buffer[read_ret - 1] = '\0';
-		if (!execute_operation(buffer, a, b))
+		if (!execute_operation(buffer, a, b, count))
 		{
 			write(2, "Error\n", 6);
 			if (buffer[0] != ' ' && buffer[1] != ' ' && buffer[2] != ' ')
@@ -83,11 +83,12 @@ void	read_opps(t_stack_node **a, t_stack_node **b)
 		read_ret = read(0, buffer, 4);
 	}
 }
-
+/* 
 int	main(int argc, char **argv)
 {
-	t_stack_node	*a;
-	t_stack_node	*b;
+	t_node		*a;
+	t_node		*b;
+	t_benchmark	*count;
 
 	a = NULL;
 	b = NULL;
@@ -96,7 +97,7 @@ int	main(int argc, char **argv)
 	else if (argc == 2)
 		argv = ft_split(argv[1], ' ');
 	init_stack_a(&a, argv + 1);
-	read_opps(&a, &b);
+	read_opps(&a, &b, count);
 	if (is_sorted(a) && !b)
 		write(1, "OK\n", 3);
 	else
@@ -104,4 +105,4 @@ int	main(int argc, char **argv)
 	free_stack(&a);
 	free_stack(&b);
 	return (0);
-}
+}*/

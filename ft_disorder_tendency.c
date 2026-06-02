@@ -6,13 +6,13 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 22:57:25 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/05/30 01:22:29 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/02 21:23:21 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-size_t 	ft_check_number_options(char **argv, size_t n, size_t k)
+size_t	ft_check_number_options(char **argv, size_t n, size_t k)
 {
 	if (!ft_strncmp(argv[n], "--bench", ft_strlen(argv[n])))
 		k += 1;
@@ -39,10 +39,10 @@ float	ft_check_individual_args(char **argv)
 	i = ft_check_number_options(argv, 1, 0);
 	total_pairs = 0;
 	mistakes = 0;
-	while (i <= ft_strlen(*argv) - ft_check_number_options(argv, 1, 1))
+	while (i <= ft_argv_len(argv) - ft_check_number_options(argv, 1, 1))
 	{
 		j = i + 1;
-		while (j <= ft_strlen(*argv) - ft_check_number_options(argv, 1, 1))
+		while (j <= ft_argv_len(argv) - ft_check_number_options(argv, 1, 1))
 		{
 			total_pairs += 1;
 			if (argv[i] > argv[j])
@@ -65,13 +65,14 @@ float	ft_check_arg_args(char **argv)
 
 float	ft_disorder_tendency(char **argv)
 {
-	if (ft_strlen(*argv) > 2)
-		return (ft_check_individual_args(**argv));
-	else if (ft_strlen(*argv) == 2)
-		return (ft_check_arg_args(**argv));
+	if (ft_argv_len(argv) > 2)
+		return (ft_check_individual_args(argv));
+	else if (ft_argv_len(argv) == 2)
+		return (ft_check_arg_args(argv));
 	return (-1);
 }
-float	ft_dissorder(t_stack_node *a)
+
+float	ft_dissorder(t_node *a)
 {
 	int			*stack;
 	char		**m;
@@ -88,12 +89,13 @@ float	ft_dissorder(t_stack_node *a)
 		a = a->next;
 	}
 	stack[i] = '\0';
-	m[i + 2] = '\0';
-	while(i + 1 > 0)
+	//m[i + 1] = '\0';
+	while (i + 1 > 0)
 	{
 		m[i + 1] = ft_itoa(stack[i]);
 		--i;
 	}
-	m[0] = '0';
+	m[0] = 0;
+	free(stack);
 	return (ft_disorder_tendency(m));
 }

@@ -9,12 +9,20 @@ COMMON_FILES = $(OPERATIONS_PATH)ft_push.c \
                $(OPERATIONS_PATH)ft_swap.c \
                $(OPERATIONS_PATH)ft_rotate.c \
                $(OPERATIONS_PATH)ft_reverse_rotate.c \
-               ft_handle_errors.c \
-               ft_link_a_to_b.c \
-               ft_link_b_to_a.c \
+               ft_bench.c \
+               ft_check.c \
+               ft_chunk_sort_utils.c \
+               ft_chunk_sort.c \
+               ft_costs.c \
+               ft_disorder_tendency.c \
+               ft_free.c \
+               ft_init_sort.c \
+               ft_init.c \
+               ft_ksort.c \
+               ft_lists.c \
+               ft_parsing.c \
                ft_push_swap_utils.c \
-               ft_stack_init.c \
-               ft_turk.c
+               ft_simple_sort.c \
 
 PUSH_SWAP_FILES = ft_push_swap.c
 CHECKER_FILES = checker.c

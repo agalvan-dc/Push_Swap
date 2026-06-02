@@ -6,16 +6,16 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 12:21:35 by caperale          #+#    #+#             */
-/*   Updated: 2026/05/30 01:22:01 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/02 21:35:09 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-void	ft_lowest_on_a(t_stack_node	*a, t_stack_node	*b, t_benchmark *count)
+void	ft_lowest_on_a(t_node	*a, t_node	*b, t_benchmark *count)
 {
-	t_stack_node	*tmp;
-	t_stack_node	*bs;
+	t_node	*tmp;
+	t_node	*bs;
 
 	while (a->next)
 	{
@@ -38,10 +38,10 @@ void	ft_lowest_on_a(t_stack_node	*a, t_stack_node	*b, t_benchmark *count)
 		a = tmp->next;
 	}
 	a->has_been_lowest = true;
-	pb(&b, &a, 1, &count);
+	pb(&b, &a, 1, count);
 }
 
-void	ft_lowest_on_b(t_stack_node *a, t_stack_node *b, t_benchmark *count)
+void	ft_lowest_on_b(t_node *a, t_node *b, t_benchmark *count)
 {
 	rb(&b, 1, count);
 	while (b->next && b->index == false)
@@ -51,18 +51,17 @@ void	ft_lowest_on_b(t_stack_node *a, t_stack_node *b, t_benchmark *count)
 	}
 }
 
-void	ft_simple_sort(t_stack_node *a, t_stack_node *b, int n, t_benchmark count)
+void	ft_simple_sort(t_node *a, t_node *b, int n, t_benchmark *count)
 {
-	float	dt;
-
-	dt = ft_dissorder(a);
 	while (a->next)
 	{
-		ft_lowest_on_a(a, b, &count);
-		ft_lowest_on_b(a, b, &count);
+		ft_lowest_on_a(a, b, count);
+		ft_lowest_on_b(a, b, count);
 		a = a->next;
 	}
+	while (b)
+		pa(&a, &b, 1, count);
 	if (a->bench)
-		ft_bench(dt, n, count);
+		ft_bench(n, count);
 	ft_free_all(a, b);
 }

@@ -12,58 +12,9 @@
 
 #include "../ft_push_swap.h"
 
-void	ft_target_to_top(t_stack_node **stack, t_stack_node *top_node,
-		char stack_name)
+static void	push(t_node **src, t_node **dst)
 {
-	while (*stack != top_node)
-	{
-		if (stack_name == 'A')
-		{
-			if (top_node->above_median)
-				ra(stack, false);
-			else
-				rra(stack, false);
-		}
-		else
-		{
-			if (top_node->above_median)
-				rb(stack, false);
-			else
-				rrb(stack, false);
-		}
-	}
-}
-
-void	ft_sort_three(t_stack_node **stack)
-{
-	int	a;
-	int	b;
-	int	c;
-
-	a = (*stack)->nbr;
-	b = (*stack)->next->nbr;
-	c = (*stack)->next->next->nbr;
-	if (a > b && b < c && a < c)
-		sa(stack, false);
-	else if (a > b && b > c)
-	{
-		sa(stack, false);
-		rra(stack, false);
-	}
-	else if (a > b && b < c && a > c)
-		ra(stack, false);
-	else if (a < b && b > c && a < c)
-	{
-		sa(stack, false);
-		ra(stack, false);
-	}
-	else if (a < b && b > c && a > c)
-		rra(stack, false);
-}
-
-static void	push(t_stack_node **src, t_stack_node **dst)
-{
-	t_stack_node	*push_node;
+	t_node	*push_node;
 
 	if (!*src)
 		return ;
@@ -85,7 +36,7 @@ static void	push(t_stack_node **src, t_stack_node **dst)
 	}
 }
 
-void	pa(t_stack_node **a, t_stack_node **b, bool print, t_benchmark *count) // push a
+void	pa(t_node **a, t_node **b, bool print, t_benchmark *count) // push a
 {
 	push(b, a);
 	count->npa += 1;
@@ -94,7 +45,7 @@ void	pa(t_stack_node **a, t_stack_node **b, bool print, t_benchmark *count) // p
 		ft_printf("pa\n");
 }
 
-void	pb(t_stack_node **b, t_stack_node **a, bool print, t_benchmark *count) // push b
+void	pb(t_node **b, t_node **a, bool print, t_benchmark *count) // push b
 {
 	push(a, b);
 	count->npb += 1;

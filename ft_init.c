@@ -5,49 +5,47 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/28 05:14:39 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/05/30 01:17:33 by agalvan-         ###   ########.fr       */
+/*   Created: 2026/06/02 20:44:09 by agalvan-          #+#    #+#             */
+/*   Updated: 2026/06/02 23:36:43 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-void	ft_list_stack(t_stack_node **a, char **m, size_t *i, bool bench)
+void	ft_list_stack(t_node **a, char **m, size_t *i, bool bench)
 {
-	t_stack_node	*last;
-
-	last = ft_stacknew(m[*i], bench);
+	t_node	*last;
+	
+	last = ft_stacknew(ft_atoi(m[*i]), bench);
 	ft_stackadd_back(a, last);
 	++(*i);
 }
 
-void	ft_stack_operations(t_stack_node **a, char **m, size_t i, int n)
+void	ft_stack_operations(t_node **a, char **m, size_t i, int n)
 {
-	bool bench;
+	bool	bench;
 
 	bench = false;
 	if (ft_bench_option(m[1], m[2]))
 		bench = true;
-	*a = ft_stacknew(m[n], bench);
+	*a = ft_stacknew(ft_atoi(m[n]), bench);
 	while (m[i])
 		ft_list_stack(a, m, &i, bench);
 }
 
-void	ft_stack_stack(t_stack_node **a, char **m, int n)
+void	ft_stack_stack(t_node **a, char **m, int n)
 {
-	size_t	i;
-
-	i = 1;
 	if (!n)
-		ft_stack_operations(a, m, i, 0);
+		ft_stack_operations(a, m, 1, 0);
 	else if (!ft_check_mode(m[1]))
-		ft_stack_operations(a, m, i, 1);
+		ft_stack_operations(a, m, 2, 1);
 	else if (ft_check_mode(m[1]) && !ft_check_mode(m[2]))
-		ft_stack_operations(a, m, i, 2);
+		ft_stack_operations(a, m, 3, 2);
 	else if (ft_check_mode(m[1]) && ft_check_mode(m[2]))
-		ft_stack_operations(a, m, i, 3);
+		ft_stack_operations(a, m, 4, 3);
 }
-int	ft_init_stack(t_stack_node **a, int argc, char **argv)
+
+int	ft_init_stack(t_node **a, int argc, char **argv)
 {
 	char	**m;
 
@@ -60,29 +58,38 @@ int	ft_init_stack(t_stack_node **a, int argc, char **argv)
 	}
 	else if (argc == 3)
 	{
-		m = ft_split(argv[2], ' ');
-		if (!m)
-			return (0);
-		ft_stack_stack(a, m, 0);
+		if (ft_check_mode(argv[1]))
+		{
+			m = ft_split(argv[2], ' ');
+			if (!m)
+				return (0);
+			ft_stack_stack(a, m, 0);
+		}
+		else 
+			ft_init_stack(a, 0, argv);
 	}
 	else
 		ft_stack_stack(a, argv, 1);
 	return (1);
 }
-t_benchmark	ft_init_bench(void)
-{
-	t_benchmark 	count;
 
-	count.nsa = 0;
-	count.npa = 0;
-	count.nss = 0;
-	count.npa = 0;
-	count.npb = 0;
-	count.nra = 0;
-	count.nrb = 0;
-	count.nrr = 0;
-	count.nrra = 0;
-	count.nrrb = 0;
-	count.total = 0;
+t_benchmark	*ft_init_bench(t_node *a)
+{
+	t_benchmark	*count;
+
+	count = NULL;
+	count->nsa = 0;
+	count->npa = 0;
+	count->nss = 0;
+	count->npa = 0;
+	count->npb = 0;
+	count->nra = 0;
+	count->nrb = 0;
+	count->nrr = 0;
+	count->nrra = 0;
+	count->nrrb = 0;
+	count->nrrr = 0;
+	count->total = 0;
+	count->dt = ft_dissorder(a);
 	return (count);
 }

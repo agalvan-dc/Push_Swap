@@ -13,7 +13,7 @@
 #include "ft_push_swap.h"
 
 // encontrar puntero al ultimo bloque del stack
-t_stack_node	*find_last(t_stack_node *stack)
+t_node	*find_last(t_node *stack)
 {
 	if (!stack)
 		return (NULL);
@@ -22,24 +22,8 @@ t_stack_node	*find_last(t_stack_node *stack)
 	return (stack);
 }
 
-// conseguir la longitud del stack
-int	stack_len(t_stack_node *stack)
-{
-	int	i;
-
-	if (!stack)
-		return (0);
-	i = 0;
-	while (stack)
-	{
-		i++;
-		stack = stack->next;
-	}
-	return (i);
-}
-
 // comprobamos si el stack está ordenado
-bool	stack_sorted(t_stack_node *stack)
+bool	stack_sorted(t_node *stack)
 {
 	if (!stack)
 		return (1);
@@ -53,10 +37,10 @@ bool	stack_sorted(t_stack_node *stack)
 	return (1);
 }
 
-t_stack_node	*find_min(t_stack_node *stack)
+t_node	*find_min(t_node *stack)
 {
-	t_stack_node	*current;
-	long			min;
+	t_node	*current;
+	long	min;
 
 	min = LONG_MAX;
 	current = stack;
@@ -69,10 +53,10 @@ t_stack_node	*find_min(t_stack_node *stack)
 	return (current);
 }
 
-t_stack_node	*find_max(t_stack_node *stack)
+t_node	*find_max(t_node *stack)
 {
-	t_stack_node	*current;
-	long			max;
+	t_node	*current;
+	long	max;
 
 	max = LONG_MIN;
 	current = stack;
@@ -85,7 +69,7 @@ t_stack_node	*find_max(t_stack_node *stack)
 	return (current);
 }
 
-int	get_chunk_ranges(t_stack_node *stack)
+int	get_chunk_ranges(t_node *stack)
 {
 	return ((find_max(stack) - find_min(stack)) / 5);
 }
