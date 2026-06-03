@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 12:21:35 by caperale          #+#    #+#             */
-/*   Updated: 2026/06/02 21:35:09 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/04 00:43:01 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	ft_lowest_on_b(t_node **a, t_node **b, t_benchmark *count)
 	while ((*b)->next && (*b)->index == false)
 	{
 		pa(a, b, 0, count);
-		b = b->next;
+		(*b) = (*b)->next;
 	}
 }
 

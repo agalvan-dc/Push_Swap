@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 22:57:25 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/06/02 21:23:21 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/04 00:38:28 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ float	ft_dissorder(t_node *a)
 		stack[i++] = a->nbr;
 		a = a->next;
 	}
-	stack[i] = NULL;
+	stack[i] = 0;
 	while (i + 1 > 0)
 	{
 		m[i + 1] = ft_itoa(stack[i]);
@@ -97,5 +97,6 @@ float	ft_dissorder(t_node *a)
 	}
 	m[0] = 0;
 	free(stack);
-	return (ft_disorder_tendency(m));
+	i = ft_disorder_tendency(m);
+	return (ft_free_array(m), i);
 }

@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 17:49:39 by cperales          #+#    #+#             */
-/*   Updated: 2026/06/02 22:32:57 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/04 00:38:43 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ float		ft_dissorder(t_node *a);
 
 void		ft_free_all(t_node *a, t_node *b);
 void		ft_free_stack(t_node **stack);
+void		ft_free_array(char **m);
 
 void		ft_parsing_selection(char **argv, t_node *a, t_node *b);
 void		ft_adaptative_sort(char **argv, t_node *a, t_node *b);
@@ -142,8 +143,8 @@ t_node		*find_min(t_node *stack);
 t_node		*find_max(t_node *stack);
 int			get_chunk_ranges(t_node *stack);
 
-void		ft_lowest_on_a(t_node	*a, t_node	*b, t_benchmark *count);
-void		ft_lowest_on_b(t_node *a, t_node *b, t_benchmark *count);
+void		ft_lowest_on_a(t_node	**a, t_node	**b, t_benchmark *count);
+void		ft_lowest_on_b(t_node **a, t_node **b, t_benchmark *count);
 void		ft_simple_sort(t_node *a, t_node *b, int n, t_benchmark *count);
 
 #endif
