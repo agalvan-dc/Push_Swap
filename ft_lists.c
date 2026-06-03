@@ -16,7 +16,7 @@ t_node	*ft_stacknew(int content, bool bench)
 {
 	t_node	*node;
 
-	node = malloc(sizeof(t_node*));
+	node = malloc(sizeof(t_node));
 	if (!node)
 		return (NULL);
 	node->nbr = content;

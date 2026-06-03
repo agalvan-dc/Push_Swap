@@ -25,7 +25,7 @@ size_t	ft_check_number_options(char **argv, size_t n, size_t k)
 	else if (!ft_strncmp(argv[n], "--adaptive", ft_strlen(argv[n])))
 		k += 1;
 	if (n < 2)
-		ft_check_number_options(argv, 2, k);
+		return(ft_check_number_options(argv, 2, k));
 	return (k);
 }
 
@@ -45,8 +45,9 @@ float	ft_check_individual_args(char **argv)
 		while (j <= ft_argv_len(argv) - ft_check_number_options(argv, 1, 1))
 		{
 			total_pairs += 1;
-			if (argv[i] > argv[j])
+			if (ft_atoi(argv[i]) > ft_atoi(argv[j]))
 				mistakes += 1;
+			++j;
 		}
 		++i;
 	}
@@ -76,7 +77,7 @@ float	ft_dissorder(t_node *a)
 {
 	int			*stack;
 	char		**m;
-	size_t		i;
+	int			i;
 
 	i = 0;
 	stack = malloc(sizeof(int) * (ft_stacksize(a) + 1));
@@ -88,8 +89,7 @@ float	ft_dissorder(t_node *a)
 		stack[i++] = a->nbr;
 		a = a->next;
 	}
-	stack[i] = '\0';
-	//m[i + 1] = '\0';
+	stack[i] = NULL;
 	while (i + 1 > 0)
 	{
 		m[i + 1] = ft_itoa(stack[i]);

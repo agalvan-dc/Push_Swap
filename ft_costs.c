@@ -62,7 +62,7 @@ void	ft_move_second_to_top(t_node *a, t_node *b,
 			ft_move_node_to_top(current, false, count);
 		current = current->prev;
 	}
-	pb(&b, &a, 1, count);
+	pb(&b, &a, 0, count);
 }
 
 void	ft_move_first_to_top(t_node *a, t_node *b, int hold_first,
@@ -77,5 +77,5 @@ void	ft_move_first_to_top(t_node *a, t_node *b, int hold_first,
 			ft_move_node_to_top(current, true, count);
 		current = current->next;
 	}
-	pb(&b, &a, 1, count);
+	pb(&b, &a, 0, count);
 }

@@ -41,31 +41,38 @@ void	ft_arrange(t_node *a, t_node *b, t_benchmark *count)
 	while (b)
 	{
 		ft_move_node_to_top(find_max(b), ft_above_median(b), count);
-		pa(&a, &b, 1, count);
+		pa(&a, &b, 0, count);
 		b = b->next;
 	}
+}
+void	ft_k_operations(t_node **a, t_node **b, t_benchmark *count, int *push)
+{
+	pb(a, b, 0, count);
+	rb(b, 0, count);
+	++(*push);
 }
 
 void	ft_ksort(t_node *a, t_node *b, int n, t_benchmark *count)
 {
 	int		k;
-	t_node	*current;
+	int		size;
+	int		push;
 
 	k = ft_sqrt(ft_stacksize(a)) * 4.12;
-	//ft_current_index(a);
-	current = a;
-	while (current)
+	ft_put_indexes(a);
+	size = ft_stacksize(a);
+	push = 0;
+	while (push < size)
 	{
-		current = a->next;
 		if (a->index > ft_stacksize(b) + k)
-		{
-			pb(&a, &b, 1, count);
-			rb(&b, 1, count);
-		}
+			ft_k_operations(&a, &b, count, &push);
 		else if (a->index > ft_stacksize(b))
-			pb(&a, &b, 1, count);
+		{
+			pb(&a, &b, 0, count);
+			++push;
+		}
 		else
-			ra(&a, 1, count);
+			ra(&a, 0, count);
 	}
 	ft_arrange(a, b, count);
 	if (a->bench)

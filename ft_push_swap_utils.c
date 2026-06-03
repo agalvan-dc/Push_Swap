@@ -40,33 +40,43 @@ bool	stack_sorted(t_node *stack)
 t_node	*find_min(t_node *stack)
 {
 	t_node	*current;
+	t_node	*min_node;
 	long	min;
 
 	min = LONG_MAX;
 	current = stack;
+	min_node = stack;
 	while (current)
 	{
 		if (current->index < min)
+		{
 			min = current->index;
+			min_node = current;
+		}
 		current = current->next;
 	}
-	return (current);
+	return (min_node);
 }
 
 t_node	*find_max(t_node *stack)
 {
 	t_node	*current;
+	t_node	*max_node;
 	long	max;
 
 	max = LONG_MIN;
 	current = stack;
+	max_node = stack;
 	while (current)
 	{
-		if (current->index < max)
+		if (current->index > max)
+		{	
 			max = current->index;
+			max_node = current;
+		}
 		current = current->next;
 	}
-	return (current);
+	return (max_node);
 }
 
 int	get_chunk_ranges(t_node *stack)

@@ -21,7 +21,7 @@ void	ft_move_node_to_top(t_node *a, bool above_median, t_benchmark *count)
 	{
 		while (current)
 		{
-			ra(&a, 1, count);
+			ra(&a, 0, count);
 			current = current->prev;
 		}
 	}
@@ -29,7 +29,7 @@ void	ft_move_node_to_top(t_node *a, bool above_median, t_benchmark *count)
 	{
 		while (current)
 		{
-			rra(&a, 1, count);
+			rra(&a, 0, count);
 			current = current->next;
 		}
 	}

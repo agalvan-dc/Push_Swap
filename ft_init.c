@@ -77,7 +77,9 @@ t_benchmark	*ft_init_bench(t_node *a)
 {
 	t_benchmark	*count;
 
-	count = NULL;
+	count = (t_benchmark *)malloc(sizeof(t_benchmark));
+	if (!count)
+		return (NULL);
 	count->nsa = 0;
 	count->npa = 0;
 	count->nss = 0;

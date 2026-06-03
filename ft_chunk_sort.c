@@ -68,7 +68,7 @@ int	ft_cost_to_top(t_node *a)
 		node = node->next;
 		j++;
 	}
-	j++;
+	//j++; esto por que?
 	if (j < i)
 		return (j);
 	return (i);
@@ -108,7 +108,7 @@ void	ft_chunk_sort(t_node *a, t_node *b, int n, t_benchmark *count)
 	ft_put_indexes(a);
 	if (ft_chunk_sort_loop(a, b, count))
 		ft_simple_sort(a, b, n, count);
-	if (a->bench)
+	if (a->bench && !ft_chunk_sort_loop(a, b, count))
 		ft_bench(n, count);
 	ft_arrange(a, b, count);
 	ft_free_all(a, b);

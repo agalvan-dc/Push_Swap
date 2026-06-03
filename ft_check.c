@@ -19,7 +19,7 @@ int	ft_check_args(char **argv)
 	i = ft_check_number_options(argv, 1, 0);
 	while (i <= ft_argv_len(argv) - ft_check_number_options(argv, 1, 0))
 	{
-		if (!(ft_parse_num(argv)))
+		if (!(ft_parse_num(argv[i])))
 			return (0);
 		i++;
 	}
@@ -73,7 +73,7 @@ int	ft_check_mode(char *argv)
 		return (1);
 	if (!(ft_strncmp(argv, "--complex", ft_strlen(argv))))
 		return (1);
-	if (!(ft_strncmp(argv, "--adaptive", ft_strlen(argv))))
+	if (!(ft_strncmp(argv, "--adaptative", ft_strlen(argv))))
 		return (1);
 	return (0);
 }
@@ -89,9 +89,11 @@ int	ft_check_all(char **argv)
 		return (0);
 	while (i < ft_argv_len(argv) - ft_check_number_options(argv, 1, 0))
 	{
-		if (!(ft_parse_num(argv)))
+		if (!(ft_parse_num(argv[i])))
 			return (0);
 		++i;
 	}
+	if (!ft_check_duplicates(argv))
+		return (0);
 	return (1);
 }

@@ -34,7 +34,7 @@ void	ft_strat_option(int n)
 	else if (n == 5)
 		write(2, "Adaptive / O(n^3/2)\n", 20);
 	else if (n == 6)
-		write(2, "Adaptive / O(nlog(n))\n", 22);
+		write(2, "Adaptative / O(nlog(n))\n", 22);
 }
 
 void	ft_bench_ops(t_benchmark *count)

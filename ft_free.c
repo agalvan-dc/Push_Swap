@@ -32,16 +32,7 @@ void	ft_free_stack(t_node **stack)
 
 void	ft_free_all(t_node *a, t_node *b)
 {
-	t_node	*current;
-
-	current = a;
-	while (current)
-	{
-		current = a->next;
-		ft_free_stack(&a);
-		free(a);
-	}
-	free(b);
-	return ;
+	ft_free_stack(a);
+	ft_free_stack(b);
 }
 

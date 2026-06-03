@@ -16,26 +16,30 @@ void	ft_parsing_selection(char **argv, t_node *a, t_node *b)
 {
 	if (a->parse)
 	{
-		if (ft_strncmp(argv[1], "--simple", ft_strlen(argv[1])))
+		if (!ft_strncmp(argv[1], "--simple", ft_strlen(argv[1])))
 			ft_simple_sort(a, b, 1, ft_init_bench(a));
-		else if (ft_strncmp(argv[1], "--medium", ft_strlen(argv[1])))
+		else if (!ft_strncmp(argv[1], "--medium", ft_strlen(argv[1])))
 			ft_chunk_sort(a, b, 2, ft_init_bench(a));
-		else if (ft_strncmp(argv[1], "--complex", ft_strlen(argv[1])))
+		else if (!ft_strncmp(argv[1], "--complex", ft_strlen(argv[1])))
 			ft_ksort(a, b, 3, ft_init_bench(a));
-		else if (ft_strncmp(argv[1], "--adaptative", ft_strlen(argv[1])))
+		else if (!ft_strncmp(argv[1], "--adaptative", ft_strlen(argv[1])))
 			ft_parse_options(2, argv, a, b);
+		else
+			ft_adaptative_sort(argv, a, b);
 	}
-	if (ft_strncmp(argv[2], "--simple", ft_strlen(argv[2])))
+	else if (!ft_strncmp(argv[2], "--simple", ft_strlen(argv[2])))
 		ft_simple_sort(a, b, 1, ft_init_bench(a));
-	else if (ft_strncmp(argv[2], "--medium", ft_strlen(argv[2])))
+	else if (!ft_strncmp(argv[2], "--medium", ft_strlen(argv[2])))
 		ft_chunk_sort(a, b, 2, ft_init_bench(a));
-	else if (ft_strncmp(argv[2], "--complex", ft_strlen(argv[2])))
+	else if (!ft_strncmp(argv[2], "--complex", ft_strlen(argv[2])))
 		ft_ksort(a, b, 3, ft_init_bench(a));
-	else if (ft_strncmp(argv[2], "--adaptative", ft_strlen(argv[2])))
+	else if (!ft_strncmp(argv[2], "--adaptative", ft_strlen(argv[2])))
 		ft_parse_options(2, argv, a, b);
+	else
+		ft_adaptative_sort(argv, a, b);
 }
 
-void	ft_adaptive_sort(char **argv, t_node *a, t_node *b)
+void	ft_adaptative_sort(char **argv, t_node *a, t_node *b)
 {
 	if (ft_disorder_tendency(argv) < 0.2)
 		ft_simple_sort(a, b, 4, ft_init_bench(a));
@@ -49,7 +53,7 @@ int	ft_bench_option(char *s1, char *s2)
 {
 	if (!ft_strncmp(s1, "--bench", ft_strlen(s1)))
 		return (1);
-	if (ft_strncmp(s2, "--bench", ft_strlen(s2)))
+	if (!ft_strncmp(s2, "--bench", ft_strlen(s2)))
 		return (1);
 	return (0);
 }

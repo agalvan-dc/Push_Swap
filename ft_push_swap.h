@@ -67,9 +67,10 @@ void		rrb(t_node **b, bool print, t_benchmark *count);
 void		rrr(t_node **a, t_node **b, bool print, t_benchmark *count);
 
 int			ft_parse_errors(int argc, char **argv);
+int			ft_check_duplicates(char **argv);
 void		ft_parse_options(int argc, char **argv, t_node *a, t_node *b);
 void		ft_parse_modes(char **argv, t_node *a, t_node *b, int n);
-int			ft_parse_num(char **argv);
+int			ft_parse_num(char *argv);
 
 int			ft_check_all(char **argv);
 int			ft_check_mode(char *argv);
@@ -116,7 +117,7 @@ void		ft_free_all(t_node *a, t_node *b);
 void		ft_free_stack(t_node **stack);
 
 void		ft_parsing_selection(char **argv, t_node *a, t_node *b);
-void		ft_adaptive_sort(char **argv, t_node *a, t_node *b);
+void		ft_adaptative_sort(char **argv, t_node *a, t_node *b);
 int			ft_bench_option(char *s1, char *s2);
 
 void		ft_list_stack(t_node **a, char **m, size_t *i, bool bench);
