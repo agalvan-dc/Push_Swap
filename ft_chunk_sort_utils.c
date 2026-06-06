@@ -6,17 +6,17 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 07:41:45 by caperale          #+#    #+#             */
-/*   Updated: 2026/06/02 19:48:27 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/06 11:58:04 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-void	ft_move_node_to_top(t_node *a, bool above_median, t_benchmark *count)
+void	ft_move_node_to_top(t_node **a, bool above_median, t_benchmark **count)
 {
-	t_node	*current;
+	 t_node	*current;
 
-	current = a;
+	current = *a;
 	if (above_median == true)
 	{
 		while (current)

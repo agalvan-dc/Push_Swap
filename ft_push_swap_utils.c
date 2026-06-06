@@ -70,7 +70,7 @@ t_node	*find_max(t_node *stack)
 	while (current)
 	{
 		if (current->index > max)
-		{	
+		{
 			max = current->index;
 			max_node = current;
 		}

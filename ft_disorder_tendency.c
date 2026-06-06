@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 22:57:25 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/06/04 00:38:28 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/04 06:51:05 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ size_t	ft_check_number_options(char **argv, size_t n, size_t k)
 		k += 1;
 	else if (!ft_strncmp(argv[n], "--complex", ft_strlen(argv[n])))
 		k += 1;
-	else if (!ft_strncmp(argv[n], "--adaptive", ft_strlen(argv[n])))
+	else if (!ft_strncmp(argv[n], "--adaptative", ft_strlen(argv[n])))
 		k += 1;
-	if (n < 2)
-		return(ft_check_number_options(argv, 2, k));
+	if (n < 2 && (ft_argv_len(argv) > 2))
+		return (ft_check_number_options(argv, 2, k));
 	return (k);
 }
 

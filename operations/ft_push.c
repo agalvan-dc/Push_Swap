@@ -12,44 +12,46 @@
 
 #include "../ft_push_swap.h"
 
-static void	push(t_node **src, t_node **dst)
+
+static void	push(t_node ***src, t_node ***dst)
 {
 	t_node	*push_node;
 
-	if (!*src)
+	if (!**src)
 		return ;
-	push_node = *src;
-	*src = (*src)->next;
-	if (*src)
-		(*src)->prev = NULL;
+	push_node = **src;
+	**src = (**src)->next;
+	if (**src)
+		(**src)->prev = NULL;
 	push_node->prev = NULL;
-	if (!*dst)
+	if (!**dst)
 	{
-		*dst = push_node;
+		**dst = push_node;
 		push_node->next = NULL;
 	}
 	else
 	{
-		push_node->next = *dst;
+		push_node->next = **dst;
 		push_node->next->prev = push_node;
-		*dst = push_node;
+		**dst = push_node;
 	}
-}
+ }
 
-void	pa(t_node **a, t_node **b, bool print, t_benchmark *count) // push a
+void	pa(t_node ***a, t_node ***b, bool print, t_benchmark **count)
 {
 	push(b, a);
-	count->npa += 1;
-	count->total += 1;
+	(*count)->npa += 1;
+	(*count)->total += 1;
 	if (!print)
 		ft_printf("pa\n");
 }
 
-void	pb(t_node **b, t_node **a, bool print, t_benchmark *count) // push b
+void	pb(t_node ***b, t_node ***a, bool print, t_benchmark **count)
 {
 	push(a, b);
-	count->npb += 1;
-	count->total += 1;
+	(*count)->npb += 1;
+	(*count)->total += 1;
 	if (!print)
 		ft_printf("pb\n");
 }
+

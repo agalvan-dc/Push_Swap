@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 17:14:50 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/06/04 00:41:46 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/05 20:21:00 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ void	ft_free_stack(t_node **stack)
 	*stack = NULL;
 }
 
-void	ft_free_all(t_node *a, t_node *b)
+void	ft_free_all(t_node **a, t_node **b)
 {
-	ft_free_stack(&a);
-	ft_free_stack(&b);
+	ft_free_stack(a);
+	ft_free_stack(b);
 }
 
 void	ft_free_array(char **m)
@@ -41,7 +41,7 @@ void	ft_free_array(char **m)
 	size_t	i;
 
 	i = 0;
-	while(m[i])
+	while (m[i])
 	{
 		free(m[i]);
 		i++;

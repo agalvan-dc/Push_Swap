@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 07:50:55 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/06/02 21:29:54 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/06 12:03:58 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,51 +31,53 @@ bool	ft_above_median(t_node *a)
 		a = a->next;
 		push_cost_down += 1;
 	}
+	push_cost_down += 1;
 	if (push_cost_down < push_cost_up)
 		return (false);
 	return (true);
 }
 
-void	ft_arrange(t_node *a, t_node *b, t_benchmark *count)
+void	ft_arrange(t_node ***a, t_node ***b, t_benchmark **count)
 {
-	while (b)
+	t_node	*tmp;
+	
+	while (*b)
 	{
-		ft_move_node_to_top(find_max(b), ft_above_median(b), count);
-		pa(&a, &b, 0, count);
-		b = b->next;
+		tmp = find_max(**b);
+		ft_move_node_to_top(&tmp, ft_above_median(**b), count);
+		pa(a, b, 0, count);
+		(**b) = (**b)->next;
 	}
 }
-void	ft_k_operations(t_node **a, t_node **b, t_benchmark *count, int *push)
+
+void	ft_k_operations(t_node ***a, t_node ***b, t_benchmark **count, int *push)
 {
 	pb(a, b, 0, count);
 	rb(b, 0, count);
 	++(*push);
 }
 
-void	ft_ksort(t_node *a, t_node *b, int n, t_benchmark *count)
+void	ft_ksort(t_node **a, t_node **b, int n, t_benchmark *count)
 {
 	int		k;
-	int		size;
 	int		push;
 
-	k = ft_sqrt(ft_stacksize(a)) * 4.12;
-	ft_put_indexes(a);
-	size = ft_stacksize(a);
+	k = ft_sqrt(ft_stacksize(*a)) * 4.12;
 	push = 0;
-	while (push < size)
+	while ((*a)->next)
 	{
-		if (a->index > ft_stacksize(b) + k)
-			ft_k_operations(&a, &b, count, &push);
-		else if (a->index > ft_stacksize(b))
+		if ((*a)->index <= push)
+			ft_k_operations(&a, &b, &count, &push);
+		else if ((*a)->index <= push + k)
 		{
-			pb(&a, &b, 0, count);
+			pb(&a, &b, 0, &count);
 			++push;
 		}
 		else
-			ra(&a, 0, count);
+			ra(&a, 0, &count);
 	}
-	ft_arrange(a, b, count);
-	if (a->bench)
+	ft_arrange(&a, &b, &count);
+	if ((*a)->bench)
 		ft_bench(n, count);
 	ft_free_all(a, b);
 }

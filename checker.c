@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 22:00:45 by cperales          #+#    #+#             */
-/*   Updated: 2026/06/02 21:37:30 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/04 04:24:36 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,6 @@ int	ft_execute_operation(char *op, t_node **a, t_node **b, t_benchmark *count)
 		rrr(a, b, true, count);
 	else
 		return (0);
-	return (1);
-}
-
-int	ft_is_sorted(t_node *a)
-{
-	while (a && a->next)
-	{
-		if (a->nbr > a->next->nbr)
-			return (0);
-		a = a->next;
-	}
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 05:59:39 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/06/02 23:35:23 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/04 05:21:43 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ size_t	ft_argv_len(char **argv)
 	size_t	i;
 
 	i = 0;
+	if (!argv)
+		return (i);
 	while (argv[i])
 		i++;
 	return (i);
