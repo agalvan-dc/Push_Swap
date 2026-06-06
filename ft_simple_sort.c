@@ -6,13 +6,13 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 12:21:35 by caperale          #+#    #+#             */
-/*   Updated: 2026/06/06 16:16:36 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/06 19:02:41 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-void ft_lowest_on_a(t_node ***a, t_node ***b, t_benchmark **count)
+void	ft_lowest_on_a(t_node ***a, t_node ***b, t_benchmark **count)
 {
 	while (**a && (**a)->next)
 	{

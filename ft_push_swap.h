@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 17:49:39 by cperales          #+#    #+#             */
-/*   Updated: 2026/06/06 17:15:34 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/06 19:03:35 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ typedef struct s_benchmark
 	size_t		nrra;
 	size_t		nrrb;
 	size_t		nrrr;
-	size_t				total;
-	float				dt;
-}						t_benchmark;
+	size_t		total;
+	float		dt;
+}				t_benchmark;
 
 t_node		*find_last(t_node *stack);
 bool		stack_sorted(t_node *stack);
@@ -96,7 +96,7 @@ void		ft_bench(int n, t_benchmark *count);
 
 void		ft_move_node_to_top(t_node **a, bool above_median,
 				t_benchmark **count);
-void	ft_move_node_to_top_b(t_node ***b, t_node *target,
+void		ft_move_node_to_top_b(t_node ***b, t_node *target,
 				bool above_median, t_benchmark **count);
 
 void		ft_put_indexes(t_node **stack);

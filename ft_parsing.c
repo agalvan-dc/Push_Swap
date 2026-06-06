@@ -6,18 +6,19 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 05:17:41 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/06/06 00:00:26 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/06 19:03:11 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
+
 int	ft_parse_errors(int argc, char **argv)
 {
 	if (argc == 1 || (argc == 2 && ft_check_mode(argv[1])))
 		return (write(2, "Error\n", 6), 1);
 	else if (argc == 2)
 	{
-		if (!ft_check_args(1 , ft_split(argv[1], ' ')))
+		if (!ft_check_args(1, ft_split(argv[1], ' ')))
 			return (write(2, "Error\n", 6), 1);
 	}
 	else if (argc == 3)

@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 03:31:17 by caperale          #+#    #+#             */
-/*   Updated: 2026/06/06 16:17:24 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/06 19:03:24 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,13 +104,14 @@ int	ft_chunk_sort_loop(t_node ***a, t_node ***b, t_benchmark **count)
 		else if (ft_cost_of_push_on_first(**a, chunk_ranges, &hold_first)
 			> ft_cost_of_push_on_second(**a, chunk_ranges, &hold_second))
 			ft_move_second_to_top(a, b, hold_second, count);
-		else if (ft_cost_of_push_on_first(**a, chunk_ranges, &hold_first) == - 1)
+		else if (ft_cost_of_push_on_first(**a, chunk_ranges, &hold_first) == -1)
 			chunk_ranges += stack_len / 5;
 		i++;
 	}
 	return (0);
 }
 
+//que cojones estas tocando aqui carlitos
 void	ft_chunk_sort(t_node **a, t_node **b, int n, t_benchmark *count)
 {
 	if (ft_chunk_sort_loop(&a, &b, &count))
@@ -119,5 +120,4 @@ void	ft_chunk_sort(t_node **a, t_node **b, int n, t_benchmark *count)
 		ft_bench(n, count);
 	ft_arrange(&a, &b, &count);
 	free(count);
-	//que cojones estas tocando aqui carlitos
 }

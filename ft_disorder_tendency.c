@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 22:57:25 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/06/06 16:03:40 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/06 19:00:42 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ size_t	ft_check_number_options(char **argv, size_t n, size_t k)
 		return (ft_check_number_options(argv, 2, k));
 	return (k);
 }
-
 
 float	ft_check_individual_args(char **argv)
 {
@@ -100,7 +99,7 @@ float	ft_dissorder(t_node *a)
 		a = a->next;
 		i++;
 	}
-	m[i] = NULL; 
+	m[i] = NULL;
 	tendency = ft_disorder_tendency(m);
 	return (ft_free_array(m), tendency);
 }

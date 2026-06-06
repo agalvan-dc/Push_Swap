@@ -34,7 +34,7 @@ static void	push(t_node ***src, t_node ***dst)
 		push_node->next->prev = push_node;
 		**dst = push_node;
 	}
- }
+}
 
 void	pa(t_node ***a, t_node ***b, bool print, t_benchmark **count)
 {
@@ -53,4 +53,3 @@ void	pb(t_node ***b, t_node ***a, bool print, t_benchmark **count)
 	if (!print)
 		ft_printf("pb\n");
 }
-

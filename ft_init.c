@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 20:44:09 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/06/06 16:31:05 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/06 19:02:23 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_node	*ft_stack_operations(char **m, size_t i, int n)
 {
 	t_node	*a;
 	bool	bench;
-	
+
 	bench = false;
 	if (ft_bench_option(m[1], m[2]))
 		bench = true;
@@ -61,7 +61,7 @@ int	ft_init_stack(t_node **a, int argc, char **argv)
 	}
 	else if (argc == 3 && ft_check_mode(argv[1]))
 	{
-		 m = ft_split(argv[2], ' ');
+		m = ft_split(argv[2], ' ');
 		if (!m)
 			return (0);
 		ft_stack_stack(a, m, 0);

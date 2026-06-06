@@ -6,17 +6,17 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 22:55:27 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/06/06 16:40:15 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/06 19:03:54 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
-#include <stdio.h>
+
 int	main(int argc, char **argv)
 {
 	t_node	*a;
 	t_node	*b;
-	
+
 	a = NULL;
 	b = NULL;
 	if (ft_parse_errors(argc, argv))
