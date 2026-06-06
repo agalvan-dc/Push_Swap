@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 18:50:56 by cperales          #+#    #+#             */
-/*   Updated: 2026/06/06 11:44:42 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/06 14:38:49 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	rotate(t_node ***stack)
 {
 	t_node	*last_node;
 
-	if (!*stack || !(**stack)->next)
+	if (!*stack || !**stack || !(**stack)->next)
 		return ;
 	last_node = find_last(**stack);
 	last_node->next = **stack;

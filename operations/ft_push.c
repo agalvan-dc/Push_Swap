@@ -12,7 +12,6 @@
 
 #include "../ft_push_swap.h"
 
-
 static void	push(t_node ***src, t_node ***dst)
 {
 	t_node	*push_node;

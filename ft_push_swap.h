@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 17:49:39 by cperales          #+#    #+#             */
-/*   Updated: 2026/06/06 12:04:21 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/06 17:15:34 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,18 @@ typedef struct s_node
 
 typedef struct s_benchmark
 {
-	unsigned short		nsa;
-	unsigned short		nsb;
-	unsigned short		nss;
-	unsigned short		npa;
-	unsigned short		npb;
-	unsigned short		nra;
-	unsigned short		nrb;
-	unsigned short		nrr;
-	unsigned short		nrra;
-	unsigned short		nrrb;
-	unsigned short		nrrr;
-	unsigned short		total;
+	size_t		nsa;
+	size_t		nsb;
+	size_t		nss;
+	size_t		npa;
+	size_t		npb;
+	size_t		nra;
+	size_t		nrb;
+	size_t		nrr;
+	size_t		nrra;
+	size_t		nrrb;
+	size_t		nrrr;
+	size_t				total;
 	float				dt;
 }						t_benchmark;
 
@@ -96,8 +96,10 @@ void		ft_bench(int n, t_benchmark *count);
 
 void		ft_move_node_to_top(t_node **a, bool above_median,
 				t_benchmark **count);
+void	ft_move_node_to_top_b(t_node ***b, t_node *target,
+				bool above_median, t_benchmark **count);
 
-void		ft_put_indexes(t_node ***stack);
+void		ft_put_indexes(t_node **stack);
 t_node		*ft_find_from_chunk(t_node **stack, int chunk_range);
 int			ft_cost_to_top(t_node *a);
 int			ft_chunk_sort_loop(t_node ***a, t_node ***b, t_benchmark **count);
@@ -127,9 +129,9 @@ void		ft_adaptative_sort(char **argv, t_node **a, t_node **b);
 int			ft_bench_option(char *s1, char *s2);
 
 void		ft_list_stack(t_node **a, char **m, size_t *i, bool bench);
-t_node		**ft_stack_operations(t_node **a, char **m, size_t i, int n);
-void		ft_stack_stack(t_node ****a, char **m, int n);
-int			ft_init_stack(t_node ***a, int argc, char **argv);
+t_node		*ft_stack_operations(char **m, size_t i, int n);
+void		ft_stack_stack(t_node **a, char **m, int n);
+int			ft_init_stack(t_node **a, int argc, char **argv);
 t_benchmark	*ft_init_bench(t_node *a);
 
 bool		ft_above_median(t_node *a);
@@ -151,7 +153,5 @@ int			get_chunk_ranges(t_node *stack);
 void		ft_lowest_on_a(t_node	***a, t_node	***b, t_benchmark **count);
 void		ft_lowest_on_b(t_node ***a, t_node ***b, t_benchmark **count);
 void		ft_simple_sort(t_node **a, t_node **b, int n, t_benchmark *count);
-
-t_node		**ft_create_list(int nb, bool bench);
 
 #endif

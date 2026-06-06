@@ -3,56 +3,58 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caperale <caperale@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/20 10:01:54 by caperale          #+#    #+#             */
-/*   Updated: 2026/05/20 10:01:55 by caperale         ###   ########.fr       */
+/*   Created: 2026/05/21 16:01:04 by agalvan-          #+#    #+#             */
+/*   Updated: 2026/06/06 15:52:21 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_count_digits(int nb)
+static size_t	ft_count(int num)
 {
-	size_t	cont;
+	size_t	i;
+	long	n;
 
-	cont = 0;
-	if (nb == 0)
-		return (1);
-	if (nb < 0)
-		cont++;
-	while (nb != 0)
+	i = 1;
+	n = (long)num;
+	if (n < 0)
 	{
-		nb /= 10;
-		cont++;
+		i += 1;
+		n = -n;
 	}
-	return (cont);
+	while ((n / 10) > 0)
+	{
+		n = n / 10;
+		i += 1;
+	}
+	return (i);
 }
 
 char	*ft_itoa(int n)
 {
-	char	*res;
-	int		i;
+	char	*cad;
+	long	num;
+	size_t	i;
 
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
-	else if (!n)
-		return (ft_strdup("0"));
-	i = ft_count_digits(n);
-	res = (char *)ft_calloc((i + 1), sizeof(char));
-	if (!res)
+	i = ft_count(n);
+	cad = ft_calloc(i + 1, sizeof(char));
+	if (!cad)
 		return (NULL);
-	if (n < 0)
+	num = (long)n;
+	cad[i] = '\0';
+	if (num < 0)
 	{
-		n *= (-1);
-		res[0] = '-';
+		cad[0] = '-';
+		num = -num;
 	}
-	i--;
-	while (n > 0)
+	while (num / 10 > 0)
 	{
-		res[i] = (n % 10) + '0';
-		n /= 10;
+		cad[i - 1] = (num % 10) + '0';
+		num /= 10;
 		i--;
 	}
-	return (res);
+	cad[i - 1] = (num % 10) + '0';
+	return (cad);
 }

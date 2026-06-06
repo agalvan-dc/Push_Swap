@@ -6,25 +6,25 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 03:31:17 by caperale          #+#    #+#             */
-/*   Updated: 2026/06/06 12:02:35 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/06 16:17:24 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-void	ft_put_indexes(t_node ***stack)
+void	ft_put_indexes(t_node **stack)
 {
 	t_node	*current;
 	t_node	*compare;
 	int		index;
 
-	if (!stack || !*stack || !**stack)
+	if (!stack || !*stack || !*stack)
 		return ;
-	current = **stack;
+	current = *stack;
 	while (current)
 	{
 		index = 0;
-		compare = **stack;
+		compare = *stack;
 		while (compare)
 		{
 			if (compare->nbr < current->nbr)
@@ -118,5 +118,6 @@ void	ft_chunk_sort(t_node **a, t_node **b, int n, t_benchmark *count)
 	if ((*a)->bench && !ft_chunk_sort_loop(&a, &b, &count))
 		ft_bench(n, count);
 	ft_arrange(&a, &b, &count);
-	ft_free_all(a, b);
+	free(count);
+	//que cojones estas tocando aqui carlitos
 }

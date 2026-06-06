@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 18:18:59 by cperales          #+#    #+#             */
-/*   Updated: 2026/06/06 11:46:52 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/06 16:46:55 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	swap(t_node ***head)
 {
-	if (*head || !(**head)->next)
+	if (*head || !**head || !(**head)->next)
 		return ;
 	**head = (**head)->next;
 	(**head)->prev->prev = **head;

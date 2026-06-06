@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 20:43:39 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/06/06 11:05:53 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/06 17:07:36 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_str_float(float dt)
 	ft_putnbr_fd(dt / 100, 2);
 	write(2, ",", 1);
 	ft_putnbr_fd(((int)dt % 100), 2);
-	write(2, "%%\n", 2);
+	write(2, "%", 1);
 }
 
 void	ft_strat_option(int n)
@@ -39,7 +39,7 @@ void	ft_strat_option(int n)
 
 void	ft_bench_ops(t_benchmark *count)
 {
-	write(2, "[bench] sa: ", 12);
+	write(2, "\n[bench] sa: ", 13);
 	ft_putnbr_fd(count->nsa, 2);
 	write(2, " sb: ", 5);
 	ft_putnbr_fd(count->nsb, 2);
@@ -65,7 +65,7 @@ void	ft_bench(int n, t_benchmark *count)
 {
 	write(2, "[bench] dissorder: ", 19);
 	ft_str_float(count->dt);
-	write(2, "[bench] strategy: ", 18);
+	write(2, "\n[bench] strategy: ", 19);
 	ft_strat_option(n);
 	write(2, "[bench] total ops: ", 20);
 	ft_putnbr_fd(count->total, 2);

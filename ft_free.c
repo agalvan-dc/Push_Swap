@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 17:14:50 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/06/05 20:21:00 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/06 16:26:28 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,10 @@ void	ft_free_array(char **m)
 	size_t	i;
 
 	i = 0;
+	if (!m)
+		return ;
 	while (m[i])
-	{
-		free(m[i]);
-		i++;
-	}
+		free(m[i++]);
 	free(m);
 	return ;
 }

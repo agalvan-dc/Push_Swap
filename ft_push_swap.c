@@ -6,16 +6,16 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 22:55:27 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/06/06 10:56:48 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/06 16:40:15 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
-
+#include <stdio.h>
 int	main(int argc, char **argv)
 {
-	t_node	**a;
-	t_node	**b;
+	t_node	*a;
+	t_node	*b;
 	
 	a = NULL;
 	b = NULL;
@@ -23,8 +23,8 @@ int	main(int argc, char **argv)
 		return (1);
 	if (!ft_init_stack(&a, argc, argv))
 		return (1);
-	b = ft_create_list(0, false);
 	ft_put_indexes(&a);
-	ft_parse_options(argc, argv, a, b);
+	ft_parse_options(argc, argv, &a, &b);
+	ft_free_all(&a, &b);
 	return (0);
 }

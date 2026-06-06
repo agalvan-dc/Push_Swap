@@ -12,7 +12,6 @@
 
 #include "ft_push_swap.h"
 
-// encontrar puntero al ultimo bloque del stack
 t_node	*find_last(t_node *stack)
 {
 	if (!stack)
@@ -22,7 +21,6 @@ t_node	*find_last(t_node *stack)
 	return (stack);
 }
 
-// comprobamos si el stack está ordenado
 bool	stack_sorted(t_node *stack)
 {
 	if (!stack)

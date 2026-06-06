@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 22:57:25 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/06/04 06:51:05 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/06 16:03:40 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,23 @@ size_t	ft_check_number_options(char **argv, size_t n, size_t k)
 	return (k);
 }
 
+
 float	ft_check_individual_args(char **argv)
 {
 	float	mistakes;
 	float	total_pairs;
 	size_t	i;
 	size_t	j;
+	size_t	limit;
 
+	limit = ft_argv_len(argv) - ft_check_number_options(argv, 1, 1);
 	i = ft_check_number_options(argv, 1, 0);
 	total_pairs = 0;
 	mistakes = 0;
-	while (i <= ft_argv_len(argv) - ft_check_number_options(argv, 1, 1))
+	while (i <= limit)
 	{
 		j = i + 1;
-		while (j <= ft_argv_len(argv) - ft_check_number_options(argv, 1, 1))
+		while (j <= limit)
 		{
 			total_pairs += 1;
 			if (ft_atoi(argv[i]) > ft_atoi(argv[j]))
@@ -75,28 +78,29 @@ float	ft_disorder_tendency(char **argv)
 
 float	ft_dissorder(t_node *a)
 {
-	int			*stack;
-	char		**m;
-	int			i;
+	char	**m;
+	int		size;
+	int		i;
+	float	tendency;
 
-	i = 0;
-	stack = malloc(sizeof(int) * (ft_stacksize(a) + 1));
-	m = malloc(sizeof(char *) * ft_stacksize(a) + 2);
-	if (!stack || !m)
+	size = ft_stacksize(a);
+	m = malloc(sizeof(char *) * (size + 1));
+	if (!m)
 		return (0);
+	i = 0;
 	while (a)
 	{
-		stack[i++] = a->nbr;
+		m[i] = ft_itoa(a->nbr);
+		if (!m[i])
+		{
+			while (i > 0)
+				free(m[--i]);
+			return (free(m), 0);
+		}
 		a = a->next;
+		i++;
 	}
-	stack[i] = 0;
-	while (i + 1 > 0)
-	{
-		m[i + 1] = ft_itoa(stack[i]);
-		--i;
-	}
-	m[0] = 0;
-	free(stack);
-	i = ft_disorder_tendency(m);
-	return (ft_free_array(m), i);
+	m[i] = NULL; 
+	tendency = ft_disorder_tendency(m);
+	return (ft_free_array(m), tendency);
 }
