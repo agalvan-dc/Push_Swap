@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: caperale <caperale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/02 20:44:09 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/06/06 19:02:23 by agalvan-         ###   ########.fr       */
+/*   Created: 2026/06/08 12:58:54 by caperale          #+#    #+#             */
+/*   Updated: 2026/06/08 12:58:56 by caperale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,56 +21,44 @@ void	ft_list_stack(t_node **a, char **m, size_t *i, bool bench)
 	++(*i);
 }
 
-t_node	*ft_stack_operations(char **m, size_t i, int n)
+t_node	*ft_stack_operations(char **m, size_t start, bool bench)
 {
 	t_node	*a;
-	bool	bench;
+	size_t	i;
 
-	bench = false;
-	if (ft_bench_option(m[1], m[2]))
-		bench = true;
-	a = ft_stacknew(ft_atoi(m[n]), bench);
+	if (!m || !m[start])
+		return (NULL);
+	a = ft_stacknew(ft_atoi(m[start]), bench);
+	i = start + 1;
 	while (m[i])
 		ft_list_stack(&a, m, &i, bench);
 	return (a);
 }
 
-void	ft_stack_stack(t_node **a, char **m, int n)
-{
-	if (!n)
-		*a = ft_stack_operations(m, 1, 0);
-	else if (!ft_check_mode(m[1]))
-		*a = ft_stack_operations(m, 2, 1);
-	else if (ft_check_mode(m[1]) && !ft_check_mode(m[2]))
-		*a = ft_stack_operations(m, 3, 2);
-	else if (ft_check_mode(m[1]) && ft_check_mode(m[2]))
-		*a = ft_stack_operations(m, 4, 3);
-}
-
 int	ft_init_stack(t_node **a, int argc, char **argv)
 {
 	char	**m;
+	int		i;
+	bool	bench;
 
-	if (argc == 2)
+	i = 1;
+	while (i < argc && argv[i][0] == '-' && argv[i][1] == '-')
+		i++;
+	if (i == argc)
+		return (0);
+	bench = false;
+	if (ft_bench_option(argv[1], argv[2]))
+		bench = true;
+	if (argc - i == 1)
 	{
-		m = ft_split(argv[1], ' ');
+		m = ft_split(argv[i], ' ');
 		if (!m)
 			return (0);
-		ft_stack_stack(a, m, 0);
+		*a = ft_stack_operations(m, 0, bench);
 		ft_free_array(m);
 	}
-	else if (argc == 3 && ft_check_mode(argv[1]))
-	{
-		m = ft_split(argv[2], ' ');
-		if (!m)
-			return (0);
-		ft_stack_stack(a, m, 0);
-		ft_free_array(m);
-	}
-	else if (argc == 3)
-		ft_init_stack(a, 0, argv);
 	else
-		ft_stack_stack(a, argv, 1);
+		*a = ft_stack_operations(argv, i, bench);
 	return (1);
 }
 

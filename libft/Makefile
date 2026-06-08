@@ -6,7 +6,7 @@
 #    By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/19 15:46:47 by caperale          #+#    #+#              #
-#    Updated: 2026/06/02 20:33:41 by agalvan-         ###   ########.fr        #
+#    Updated: 2026/06/08 18:19:09 by agalvan-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,7 +67,8 @@ SOURCES =  \
 	ft_lstmap.c \
 	ft_printf_utils.c \
 	ft_printf.c \
-	ft_sqrt.c
+	ft_sqrt.c \
+	ft_strjoin_and_split.c \
 
 
 OBJECTS = $(SOURCES:.c=.o)

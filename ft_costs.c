@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_costs.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: caperale <caperale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 07:12:21 by caperale          #+#    #+#             */
-/*   Updated: 2026/06/06 11:55:40 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/08 08:27:56 by caperale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,43 +15,38 @@
 int	ft_cost_of_push_on_first(t_node *a, int chunk_ranges, int *hold_first)
 {
 	t_node	*current;
-	int		cost_first;
 
-	cost_first = -1;
 	current = a;
 	while (current)
 	{
 		if (current->index <= chunk_ranges)
 		{
-			hold_first = &current->index;
-			cost_first = ft_cost_to_top(current);
+			*hold_first = current->index;
+			return (ft_cost_to_top(current));
 		}
 		current = current->next;
 	}
-	return (cost_first);
+	return (-1);
 }
 
 int	ft_cost_of_push_on_second(t_node *a, int chunk_ranges, int *hold_second)
 {
 	t_node	*current;
-	int		cost_second;
 
-	cost_second = -1;
 	current = ft_lstlast(a);
 	while (current)
 	{
 		if (current->index <= chunk_ranges)
 		{
-			hold_second = &current->index;
-			cost_second = ft_cost_to_top(current);
+			*hold_second = current->index;
+			return (ft_cost_to_top(current));
 		}
 		current = current->prev;
 	}
-	return (cost_second);
+	return (-1);
 }
 
-void	ft_move_second_to_top(t_node ***a, t_node ***b,
-	int hold_second, t_benchmark **count)
+void	ft_move_second_to_top(t_node ***a, int hold_second, t_benchmark **count)
 {
 	t_node	*current;
 
@@ -59,14 +54,15 @@ void	ft_move_second_to_top(t_node ***a, t_node ***b,
 	while (current)
 	{
 		if (current->index == hold_second)
-			ft_move_node_to_top(&current, false, count);
+		{
+			ft_move_node_to_top(a, current, false, count);
+			return ;
+		}
 		current = current->prev;
 	}
-	pb(b, a, 0, count);
 }
 
-void	ft_move_first_to_top(t_node ***a, t_node ***b, int hold_first,
-	t_benchmark **count)
+void	ft_move_first_to_top(t_node ***a, int hold_first, t_benchmark **count)
 {
 	t_node	*current;
 
@@ -74,8 +70,10 @@ void	ft_move_first_to_top(t_node ***a, t_node ***b, int hold_first,
 	while (current)
 	{
 		if (current->index == hold_first)
-			ft_move_node_to_top(&current, true, count);
+		{
+			ft_move_node_to_top(a, current, true, count);
+			return ;
+		}
 		current = current->next;
 	}
-	pb(b, a, 0, count);
 }

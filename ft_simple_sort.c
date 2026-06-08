@@ -6,23 +6,11 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 12:21:35 by caperale          #+#    #+#             */
-/*   Updated: 2026/06/06 19:02:41 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/08 17:10:18 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
-
-void	ft_lowest_on_a(t_node ***a, t_node ***b, t_benchmark **count)
-{
-	while (**a && (**a)->next)
-	{
-		if ((**a)->index < (**a)->next->index)
-			sa(a, 0, count);
-		pb(b, a, 0, count);
-	}
-	if (**a)
-		(**a)->has_been_lowest = true;
-}
 
 void	ft_lowest_on_b(t_node ***a, t_node ***b, t_benchmark **count)
 {
@@ -39,7 +27,7 @@ int	ft_is_sorted(t_node **stack)
 	int		is_sorted;
 
 	if (!stack || !*stack)
-		return (0);
+		return (-1);
 	current = (*stack);
 	is_sorted = 0;
 	while (current->next)
@@ -53,13 +41,18 @@ int	ft_is_sorted(t_node **stack)
 
 void	ft_simple_sort(t_node **a, t_node **b, int n, t_benchmark *count)
 {
-	while (ft_is_sorted(a) != 0)
+	t_node	*min;
+
+	while (*a)
 	{
-		ft_lowest_on_a(&a, &b, &count);
+		min = find_min(*a);
+		while ((*a)->nbr != min->nbr)
+			ra(&a, 0, &count);
 		pb(&b, &a, 0, &count);
-		ft_lowest_on_b(&a, &b, &count);
 	}
-	if ((*a)->bench)
+	while (*b)
+		pa(&a, &b, 0, &count);
+	if (*a && (*a)->bench)
 		ft_bench(n, count);
 	free(count);
 }

@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 00:47:44 by cperales          #+#    #+#             */
-/*   Updated: 2026/06/02 21:28:20 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/08 18:20:12 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,5 @@ void	ft_putu_pf(unsigned int n, int *counter);
 void	ft_puthex_pf(unsigned long n, int *counter, const char base);
 void	ft_putptr(void *ptr, int *counter);
 int		ft_sqrt(int nb);
+char	**ft_join_and_split(int argc, char **argv);
 #endif

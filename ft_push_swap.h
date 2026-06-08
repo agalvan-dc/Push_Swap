@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/03 17:49:39 by cperales          #+#    #+#             */
-/*   Updated: 2026/06/06 19:03:35 by agalvan-         ###   ########.fr       */
+/*   Created: 2026/06/08 08:10:32 by caperale          #+#    #+#             */
+/*   Updated: 2026/06/08 17:05:09 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,15 @@ typedef struct s_benchmark
 	size_t		total;
 	float		dt;
 }				t_benchmark;
+
+typedef struct s_chunk
+{
+	t_node			***a;
+	t_node			***b;
+	t_benchmark		**count;
+	int				chunk_range;
+	int				chunk_size;
+}	t_chunk;
 
 t_node		*find_last(t_node *stack);
 bool		stack_sorted(t_node *stack);
@@ -93,30 +102,33 @@ void		ft_str_float(float dt);
 void		ft_strat_option(int n);
 void		ft_bench_ops(t_benchmark *count);
 void		ft_bench(int n, t_benchmark *count);
+void		ft_bench_bench(t_node **a);
 
-void		ft_move_node_to_top(t_node **a, bool above_median,
-				t_benchmark **count);
+void		ft_move_node_to_top(t_node ***stack, t_node *target,
+				bool above_median, t_benchmark **count);
 void		ft_move_node_to_top_b(t_node ***b, t_node *target,
 				bool above_median, t_benchmark **count);
+void		ft_bench_launch();
 
 void		ft_put_indexes(t_node **stack);
 t_node		*ft_find_from_chunk(t_node **stack, int chunk_range);
 int			ft_cost_to_top(t_node *a);
 int			ft_chunk_sort_loop(t_node ***a, t_node ***b, t_benchmark **count);
 void		ft_chunk_sort(t_node **a, t_node **b, int n, t_benchmark *count);
+void		ft_push_best_candidate(t_chunk *chunk);
+int			ft_process_chunk(t_chunk *chunk);
 
 int			ft_cost_of_push_on_first(t_node *a, int chunk_ranges,
 				int *hold_first);
 int			ft_cost_of_push_on_second(t_node *a, int chunk_ranges,
 				int *hold_second);
-void		ft_move_second_to_top(t_node ***a, t_node ***b,
+void		ft_move_second_to_top(t_node ***a,
 				int hold_second, t_benchmark **count);
-void		ft_move_first_to_top(t_node ***a, t_node ***b, int hold_first,
+void		ft_move_first_to_top(t_node ***a, int hold_first,
 				t_benchmark **count);
 
 size_t		ft_check_number_options(char **argv, size_t n, size_t k);
-float		ft_check_individual_args(char **argv);
-float		ft_check_arg_args(char **argv);
+float		ft_check_individual_args(char **argv, size_t start);
 float		ft_disorder_tendency(char **argv);
 float		ft_dissorder(t_node *a);
 
@@ -129,8 +141,7 @@ void		ft_adaptative_sort(char **argv, t_node **a, t_node **b);
 int			ft_bench_option(char *s1, char *s2);
 
 void		ft_list_stack(t_node **a, char **m, size_t *i, bool bench);
-t_node		*ft_stack_operations(char **m, size_t i, int n);
-void		ft_stack_stack(t_node **a, char **m, int n);
+t_node		*ft_stack_operations(char **m, size_t start, bool bench);
 int			ft_init_stack(t_node **a, int argc, char **argv);
 t_benchmark	*ft_init_bench(t_node *a);
 
@@ -153,5 +164,8 @@ int			get_chunk_ranges(t_node *stack);
 void		ft_lowest_on_a(t_node	***a, t_node	***b, t_benchmark **count);
 void		ft_lowest_on_b(t_node ***a, t_node ***b, t_benchmark **count);
 void		ft_simple_sort(t_node **a, t_node **b, int n, t_benchmark *count);
+int			ft_get_index_pos(t_node *stack, int target);
+void		ft_rotate_to_top(t_node ***a, int pos,
+				int size, t_benchmark **count);
 
 #endif

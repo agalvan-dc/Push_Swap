@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 02:47:05 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/06/05 23:00:40 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/08 18:28:57 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	ft_check_args(int n, char **argv)
 			return (0);
 		i++;
 	}
+	if (!ft_check_duplicates(argv))
+		return (0);
 	return (1);
 }
 
@@ -87,8 +89,6 @@ int	ft_check_all(char **argv)
 	i = ft_check_number_options(argv, 1, 1);
 	if (!(ft_strncmp(argv[1], argv[2], ft_strlen(argv[1]))))
 		return (0);
-	else if (!(ft_check_mode(argv[1])) && !(ft_check_args(0, argv)))
-		return (0);
 	while (i < ft_argv_len(argv) - ft_check_number_options(argv, 1, 1) + 1)
 	{
 		if (!(ft_parse_num(argv[i])))
@@ -97,5 +97,11 @@ int	ft_check_all(char **argv)
 	}
 	if (!ft_check_duplicates(argv))
 		return (0);
+	if (!(ft_strncmp(argv[1], "--bench", ft_strlen(argv[1])))
+		&& !(ft_strncmp(argv[2], "--bench", ft_strlen(argv[2]))))
+	{
+		if (ft_check_mode(argv[1]) && ft_check_mode(argv[2]))
+			return (0);
+	}
 	return (1);
 }

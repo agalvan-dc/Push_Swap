@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bench.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: caperale <caperale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/02 20:43:39 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/06/06 17:07:36 by agalvan-         ###   ########.fr       */
+/*   Created: 2026/06/08 12:58:37 by caperale          #+#    #+#             */
+/*   Updated: 2026/06/08 12:58:49 by caperale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ void	ft_strat_option(int n)
 	else if (n == 3)
 		write(2, "Complex / O(nlog(n))\n", 21);
 	else if (n == 4)
-		write(2, "Adaptive / O(n^2)\n", 18);
+		write(2, "Adaptative / O(n^2)\n", 20);
 	else if (n == 5)
-		write(2, "Adaptive / O(n^3/2)\n", 20);
+		write(2, "Adaptative / O(n^3/2)\n", 22);
 	else if (n == 6)
-		write(2, "Adaptative / O(nlog(n))\n", 22);
+		write(2, "Adaptative / O(nlog(n)) \n", 25);
 }
 
 void	ft_bench_ops(t_benchmark *count)
@@ -70,4 +70,13 @@ void	ft_bench(int n, t_benchmark *count)
 	write(2, "[bench] total ops: ", 20);
 	ft_putnbr_fd(count->total, 2);
 	ft_bench_ops(count);
+}
+
+void	ft_bench_bench(t_node **a)
+{
+	t_node	*node;
+
+	node = find_min(*a);
+	node->bench = true;
+	return ;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_chunk_sort.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: caperale <caperale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 03:31:17 by caperale          #+#    #+#             */
-/*   Updated: 2026/06/06 19:03:24 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/08 08:20:03 by caperale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,11 @@ t_node	*ft_find_from_chunk(t_node **stack, int chunk_range)
 	current = *stack;
 	while (current)
 	{
-		if (current->nbr <= chunk_range)
+		if (current->index <= chunk_range)
 			return (current);
 		current = current->next;
 	}
-	return (current);
-	{
-		if (current->nbr <= chunk_range)
-			return (current);
-		current = current->next;
-	}
-	return (current);
+	return (NULL);
 }
 
 int	ft_cost_to_top(t_node *a)
@@ -84,40 +78,36 @@ int	ft_cost_to_top(t_node *a)
 
 int	ft_chunk_sort_loop(t_node ***a, t_node ***b, t_benchmark **count)
 {
-	int		chunk_ranges;
-	int		hold_first;
-	int		hold_second;
+	t_chunk	chunk;
 	int		stack_len;
-	int		i;
 
-	i = 0;
 	stack_len = ft_stacksize(**a);
-	chunk_ranges = stack_len / 5;
-	if (chunk_ranges == 0)
+	chunk.chunk_size = ft_sqrt(stack_len);
+	if (chunk.chunk_size == 0)
 		return (1);
-	while (i < stack_len + 5 - 1)
-	{
-		if ((ft_cost_of_push_on_first(**a, chunk_ranges, &hold_first)
-				<= ft_cost_of_push_on_second(**a, chunk_ranges, &hold_second))
-			&& ft_cost_of_push_on_first(**a, chunk_ranges, &hold_first) != -1)
-			ft_move_first_to_top(a, b, hold_first, count);
-		else if (ft_cost_of_push_on_first(**a, chunk_ranges, &hold_first)
-			> ft_cost_of_push_on_second(**a, chunk_ranges, &hold_second))
-			ft_move_second_to_top(a, b, hold_second, count);
-		else if (ft_cost_of_push_on_first(**a, chunk_ranges, &hold_first) == -1)
-			chunk_ranges += stack_len / 5;
-		i++;
-	}
+	chunk.a = a;
+	chunk.b = b;
+	chunk.count = count;
+	chunk.chunk_range = chunk.chunk_size;
+	while (**a)
+		ft_process_chunk(&chunk);
 	return (0);
 }
 
-//que cojones estas tocando aqui carlitos
 void	ft_chunk_sort(t_node **a, t_node **b, int n, t_benchmark *count)
 {
-	if (ft_chunk_sort_loop(&a, &b, &count))
+	int	ret;
+
+	ft_put_indexes(a);
+	ret = ft_chunk_sort_loop(&a, &b, &count);
+	if (ret)
+	{
 		ft_simple_sort(a, b, n, count);
-	if ((*a)->bench && !ft_chunk_sort_loop(&a, &b, &count))
-		ft_bench(n, count);
+		return ;
+	}
 	ft_arrange(&a, &b, &count);
+	if (*a && (*a)->bench)
+		ft_bench(n, count);
+	ft_free_all(a, b);
 	free(count);
 }

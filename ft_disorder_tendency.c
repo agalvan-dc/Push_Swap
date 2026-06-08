@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 22:57:25 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/06/06 19:00:42 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/08 18:29:52 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,22 +29,20 @@ size_t	ft_check_number_options(char **argv, size_t n, size_t k)
 	return (k);
 }
 
-float	ft_check_individual_args(char **argv)
+float	ft_check_individual_args(char **argv, size_t start)
 {
 	float	mistakes;
 	float	total_pairs;
 	size_t	i;
 	size_t	j;
-	size_t	limit;
 
-	limit = ft_argv_len(argv) - ft_check_number_options(argv, 1, 1);
-	i = ft_check_number_options(argv, 1, 0);
 	total_pairs = 0;
 	mistakes = 0;
-	while (i <= limit)
+	i = start;
+	while (argv[i])
 	{
 		j = i + 1;
-		while (j <= limit)
+		while (argv[j])
 		{
 			total_pairs += 1;
 			if (ft_atoi(argv[i]) > ft_atoi(argv[j]))
@@ -53,26 +51,32 @@ float	ft_check_individual_args(char **argv)
 		}
 		++i;
 	}
+	if (total_pairs == 0)
+		return (0.0);
 	return (mistakes / total_pairs);
-}
-
-float	ft_check_arg_args(char **argv)
-{
-	char	**m;
-
-	m = ft_split(argv[1], ' ');
-	if (!m)
-		return (0);
-	return (ft_check_individual_args(m));
 }
 
 float	ft_disorder_tendency(char **argv)
 {
-	if (ft_argv_len(argv) > 2)
-		return (ft_check_individual_args(argv));
-	else if (ft_argv_len(argv) == 2)
-		return (ft_check_arg_args(argv));
-	return (-1);
+	int		i;
+	char	**m;
+	float	res;
+
+	i = 1;
+	while (argv[i] && argv[i][0] == '-' && argv[i][1] == '-')
+		i++;
+	if (!argv[i])
+		return (0.0);
+	if (!argv[i + 1])
+	{
+		m = ft_split(argv[i], ' ');
+		if (!m)
+			return (0.0);
+		res = ft_check_individual_args(m, 0);
+		ft_free_array(m);
+		return (res);
+	}
+	return (ft_check_individual_args(argv, i));
 }
 
 float	ft_dissorder(t_node *a)
@@ -84,7 +88,7 @@ float	ft_dissorder(t_node *a)
 
 	size = ft_stacksize(a);
 	m = malloc(sizeof(char *) * (size + 1));
-	if (!m)
+	if (!m || !size)
 		return (0);
 	i = 0;
 	while (a)

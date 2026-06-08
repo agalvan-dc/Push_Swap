@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 05:59:39 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/06/04 05:21:43 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/08 17:08:11 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ int	ft_stacksize(t_node *node)
 
 	i = 0;
 	cur = node;
+	if (!node)
+		return (0);
 	while (cur)
 	{
 		++i;

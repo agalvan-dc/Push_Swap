@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_reverse_rotate.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: caperale <caperale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 19:10:19 by cperales          #+#    #+#             */
-/*   Updated: 2026/06/06 11:43:59 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/08 11:00:50 by caperale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,16 @@ static void	reverse_rotate(t_node ***stack)
 {
 	t_node	*last_node;
 
-	if (!stack || !(**stack)->next)
+	if (!stack || !*stack || !**stack || !(**stack)->next)
 		return ;
 	last_node = find_last(**stack);
+	if (!last_node || !last_node->prev)
+		return ;
 	last_node->prev->next = NULL;
 	last_node->next = **stack;
 	last_node->prev = NULL;
+	(**stack)->prev = last_node;
 	**stack = last_node;
-	last_node->next->prev = last_node;
 }
 
 void	rra(t_node ***a, bool print, t_benchmark **count)

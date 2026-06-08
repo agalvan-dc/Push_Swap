@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 21:34:15 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/06/05 20:45:13 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/08 17:34:48 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,16 @@ void	ft_adaptative_sort(char **argv, t_node **a, t_node **b)
 	if (ft_disorder_tendency(argv) < 0.2)
 		ft_simple_sort(a, b, 4, ft_init_bench(*a));
 	else if (ft_disorder_tendency(argv) < 0.5)
-		ft_chunk_sort(a, b, 4, ft_init_bench(*a));
+		ft_chunk_sort(a, b, 5, ft_init_bench(*a));
 	else
-		ft_ksort(a, b, 4, ft_init_bench(*a));
+		ft_ksort(a, b, 6, ft_init_bench(*a));
 }
 
 int	ft_bench_option(char *s1, char *s2)
 {
 	if (!ft_strncmp(s1, "--bench", ft_strlen(s1)))
 		return (1);
-	if (!ft_strncmp(s2, "--bench", ft_strlen(s2)))
+	else if (!ft_strncmp(s2, "--bench", ft_strlen(s2)))
 		return (1);
 	return (0);
 }
