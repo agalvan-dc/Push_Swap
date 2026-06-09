@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_chunk_sort_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caperale <caperale@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 07:41:45 by caperale          #+#    #+#             */
-/*   Updated: 2026/06/09 12:48:22 by caperale         ###   ########.fr       */
+/*   Updated: 2026/06/09 18:26:06 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,12 +79,13 @@ int	ft_process_chunk(t_chunk *chunk)
 	return (1);
 }
 
-void	ft_bench_launch(void)
+void	ft_bench_launch(t_node **a)
 {
 	t_benchmark	*count;
 
 	count = ft_init_bench(NULL);
 	ft_bench(1, count);
 	free(count);
+	ft_free_stack(a);
 	return ;
 }

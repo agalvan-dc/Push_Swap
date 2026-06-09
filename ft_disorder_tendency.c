@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 22:57:25 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/06/08 18:29:52 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/09 19:45:42 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ float	ft_disorder_tendency(char **argv)
 	char	**m;
 	float	res;
 
-	i = 1;
-	while (argv[i] && argv[i][0] == '-' && argv[i][1] == '-')
+	i = 0;
+	while (argv[i + 1] && argv[i + 1][0] == '-' && argv[i + 1][1] == '-')
 		i++;
 	if (!argv[i])
 		return (0.0);
@@ -82,28 +82,27 @@ float	ft_disorder_tendency(char **argv)
 float	ft_dissorder(t_node *a)
 {
 	char	**m;
-	int		size;
 	int		i;
 	float	tendency;
 
-	size = ft_stacksize(a);
-	m = malloc(sizeof(char *) * (size + 1));
-	if (!m || !size)
+	if (!a)
 		return (0);
-	i = 0;
+	m = malloc(sizeof(char *) * (ft_stacksize(a) + 1));
+	if (!m)
+		return (0);
+	i = -1;
 	while (a)
 	{
-		m[i] = ft_itoa(a->nbr);
+		m[++i] = ft_itoa(a->nbr);
 		if (!m[i])
 		{
-			while (i > 0)
-				free(m[--i]);
+			while (i-- > 0)
+				free(m[i]);
 			return (free(m), 0);
 		}
 		a = a->next;
-		i++;
 	}
-	m[i] = NULL;
+	m[++i] = NULL;
 	tendency = ft_disorder_tendency(m);
 	return (ft_free_array(m), tendency);
 }

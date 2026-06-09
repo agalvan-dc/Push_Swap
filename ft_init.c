@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caperale <caperale@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 12:58:54 by caperale          #+#    #+#             */
-/*   Updated: 2026/06/08 12:58:56 by caperale         ###   ########.fr       */
+/*   Updated: 2026/06/09 18:31:17 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_benchmark	*ft_init_bench(t_node *a)
 	if (!count)
 		return (NULL);
 	count->nsa = 0;
-	count->npa = 0;
+	count->nsb = 0;
 	count->nss = 0;
 	count->npa = 0;
 	count->npb = 0;

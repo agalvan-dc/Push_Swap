@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 05:17:41 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/06/09 16:25:18 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/09 22:45:37 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_parse_errors(int argc, char **argv)
 {
 	if (argc == 1 || (argc == 2 && ft_check_mode(argv[1])))
-		return (write(2, "Error\n", 6), 1);
+		return (1);
 	else if (argc == 2)
 	{
 		if (!ft_check_args(1, ft_split(argv[1], ' ')))
@@ -56,7 +56,7 @@ int	ft_check_duplicates(char **argv)
 
 void	ft_parse_modes(char **argv, t_node **a, t_node **b, int n)
 {
-	(*a) = ft_find_sort(a);
+	a = ft_find_sort(a);
 	if (!n)
 	{
 		(*a)->parse = true;
@@ -74,7 +74,7 @@ void	ft_parse_options(int argc, char **argv, t_node **a, t_node **b)
 		{
 			if (ft_bench_option(argv[1], argv[2]))
 				ft_bench_bench(a);
-			(*a) = ft_find_sort(a);
+			a = ft_find_sort(a);
 			ft_adaptative_sort(argv, a, b);
 		}
 		else if (argc == 3)
@@ -92,7 +92,7 @@ void	ft_parse_options(int argc, char **argv, t_node **a, t_node **b)
 			ft_parse_modes(argv, a, b, 1);
 	}
 	else if (ft_is_sorted(a) == 0 && ft_bench_option(argv[1], argv[2]))
-		ft_bench_launch();
+		ft_bench_launch(a);
 }
 
 int	ft_parse_num(char *argv)
@@ -102,11 +102,15 @@ int	ft_parse_num(char *argv)
 	j = 0;
 	if (argv[j] == '-')
 		j++;
+	if (argv[j] == '+')
+		return (0);
 	while (argv[j])
 	{
 		if (argv[j] && !(argv[j] >= '0' && argv[j] <= '9'))
 			return (0);
 		j++;
 	}
+	if (ft_atol(argv) > 2147483647 || ft_atol(argv) < -2147483648)
+		return (0);
 	return (1);
 }

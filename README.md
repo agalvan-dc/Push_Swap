@@ -14,7 +14,7 @@ El proyecto pone a prueba la capacidad de análisis de complejidad temporal y es
 
 Para optimizar el desarrollo y garantizar la modularidad del código, el proyecto fue dividido equitativamente entre los miembros del equipo:
 
-* **`caperale`**: Responsable del desarrollo de los algoritmos de ordenación pequeños y medianos (**Simple Sort** y **Medium Sort**), la implementación base y control de todas las **operaciones** de las pilas (`sa`, `pb`, `ra`, etc.), y el programa **Checker** (diseñado para verificar la validez de las instrucciones).
+* **`caperale`**: Responsable del desarrollo de los algoritmos de ordenación pequeños y medianos (**Simple Sort** y **Medium Sort**), la implementación base y control de todas las **operaciones** de las pilas (`sa`, `pb`, `ra`, etc.).
 * **`agalvan-`**: Responsable del algoritmo para grandes volúmenes de datos (**Complex Sort**), la arquitectura del **parseo** robusto de argumentos en la línea de comandos, y el sistema de **Benchmarking** integrado (`--bench`) encargado de medir el rendimiento y las métricas de desorden.
 
 ---

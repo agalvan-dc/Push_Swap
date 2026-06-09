@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 21:34:15 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/06/09 16:11:36 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/09 22:36:49 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ void	ft_parsing_selection(char **argv, t_node **a, t_node **b)
 
 void	ft_adaptative_sort(char **argv, t_node **a, t_node **b)
 {
-	if ((*a)->low_sort == 1)
+	if ((*a)->low_sort == 2)
 		ft_sort_two(a, 0, ft_init_bench(*a));
-	else if ((*a)->low_sort == 2)
-		ft_sort_three(a, 0, ft_init_bench(*a));
 	else if ((*a)->low_sort == 3)
-		ft_sort_five(a, b, 0, ft_init_bench(*a));
+		ft_sort_three(a, 0, ft_init_bench(*a));
+	else if ((*a)->low_sort == 5)
+		ft_chunk_sort(a, b, 5, ft_init_bench(*a));
 	else
 	{
 		if (ft_disorder_tendency(argv) < 0.2)

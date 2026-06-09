@@ -1,24 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_little_sorts_utils.c                            :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/09 16:13:57 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/06/09 17:25:12 by agalvan-         ###   ########.fr       */
+/*   Created: 2026/06/09 17:10:29 by agalvan-          #+#    #+#             */
+/*   Updated: 2026/06/09 22:39:28 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_push_swap.h"
+#include "libft.h"
 
-t_node	**ft_find_sort(t_node **a)
+long	ft_atol(const char *s)
 {
-	if (ft_stacksize(*a) == 2)
-		(*a)->low_sort = 2;
-	if (ft_stacksize(*a) == 3)
-		(*a)->low_sort = 3;
-	if (ft_stacksize(*a) == 5)
-		(*a)->low_sort = 5;
-	return (a);
+	long	result;
+	int		sign;
+
+	result = 0;
+	sign = 1;
+	while (*s == ' ' || *s == '\t' || *s == '\n' || *s == '\r' || *s == '\f'
+		|| *s == '\v')
+		s++;
+	if (*s == '-' || *s == '+')
+	{
+		if (*s == '-')
+			sign = -1;
+		if (*s == '+')
+			return (0);
+		s++;
+	}
+	while (ft_isdigit(*s))
+		result = result * 10 + (*s++ - '0');
+	return (result * sign);
 }

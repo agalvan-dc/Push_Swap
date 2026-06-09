@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 08:10:32 by caperale          #+#    #+#             */
-/*   Updated: 2026/06/09 16:31:34 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/09 22:56:05 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ int			ft_parse_num(char *argv);
 int			ft_check_all(char **argv);
 int			ft_check_mode(char *argv);
 int			ft_check_flags(char **argv);
-int			ft_check_check_flags(char **argv);
 int			ft_check_args(int n, char **argv);
 
 void		ft_str_float(float dt);
@@ -100,7 +99,7 @@ void		ft_move_node_to_top(t_node ***stack, t_node *target,
 				bool above_median, t_benchmark **count);
 void		ft_move_node_to_top_b(t_node ***b, t_node *target,
 				bool above_median, t_benchmark **count);
-void		ft_bench_launch(void);
+void		ft_bench_launch(t_node **a);
 
 void		ft_put_indexes(t_node **stack);
 t_node		*ft_find_from_chunk(t_node **stack, int chunk_range);
@@ -157,15 +156,12 @@ void		ft_lowest_on_b(t_node ***a, t_node ***b, t_benchmark **count);
 void		ft_simple_sort(t_node **a, t_node **b, int n, t_benchmark *count);
 int			ft_get_index_pos(t_node *stack, int target);
 
-void		ft_sort_five(t_node **a, t_node **b, int n, t_benchmark *count);
 void		ft_sort_three(t_node **a, int n, t_benchmark *count);
 void		ft_sort_two(t_node **a, int n, t_benchmark *count);
 
 void		ft_sort_five(t_node **a, t_node **b, int n, t_benchmark *count);
 void		ft_sort_three(t_node **a, int n, t_benchmark *count);
 void		ft_sort_two(t_node **a, int n, t_benchmark *count);
-t_node		*ft_find_sort(t_node **a);
-
-
+t_node		**ft_find_sort(t_node **a);
 
 #endif

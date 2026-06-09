@@ -6,7 +6,7 @@
 #    By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/19 15:46:47 by caperale          #+#    #+#              #
-#    Updated: 2026/06/08 18:19:09 by agalvan-         ###   ########.fr        #
+#    Updated: 2026/06/09 17:11:26 by agalvan-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,6 +69,8 @@ SOURCES =  \
 	ft_printf.c \
 	ft_sqrt.c \
 	ft_strjoin_and_split.c \
+	ft_atol.c \
+	
 
 
 OBJECTS = $(SOURCES:.c=.o)

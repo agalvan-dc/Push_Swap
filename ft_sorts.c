@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 12:48:51 by caperale          #+#    #+#             */
-/*   Updated: 2026/06/09 15:54:12 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/09 17:29:21 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 void	ft_sort_two(t_node **a, int n, t_benchmark *count)
 {
-	if (!ft_is_sorted(a))
-		sa(&a, 0, &count);
+	sa(&a, 0, &count);
 	if (*a && (*a)->bench)
 		ft_bench(n, count);
 	free(count);
@@ -49,10 +48,8 @@ static void	ft_sort_three_if(t_node **a, t_benchmark *count)
 
 void	ft_sort_three(t_node **a, int n, t_benchmark *count)
 {
-	if (!ft_is_sorted(a))
-		ft_sort_three_if(a, count);
+	ft_sort_three_if(a, count);
 	if (*a && (*a)->bench)
 		ft_bench(n, count);
 	free(count);
 }
-

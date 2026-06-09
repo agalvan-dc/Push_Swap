@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 22:55:27 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/06/09 16:06:20 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/09 18:55:37 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int argc, char **argv)
 		return (1);
 	new_argc = ft_argv_len(m);
 	if (ft_parse_errors(new_argc, m))
-		return (free(m), 1);
+		return (ft_free_array(m), 1);
 	if (!ft_init_stack(&a, new_argc, m))
 		return (free(m), 1);
 	ft_put_indexes(&a);
