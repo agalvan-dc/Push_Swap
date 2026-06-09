@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 08:10:32 by caperale          #+#    #+#             */
-/*   Updated: 2026/06/09 16:25:41 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/09 16:31:34 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,6 @@ void		rrb(t_node ***b, bool print, t_benchmark **count);
 void		rrr(t_node ***a, t_node ***b, bool print, t_benchmark **count);
 
 int			ft_is_sorted(t_node **a);
-int			ft_execute_operation(char *op,
-				t_node **a, t_node **b, t_benchmark *count);
-void		ft_clear_stdin_line(void);
-void		ft_read_opps(t_node **a, t_node **b, t_benchmark *count);
 
 int			ft_parse_errors(int argc, char **argv);
 int			ft_check_duplicates(char **argv);
@@ -93,11 +89,6 @@ int			ft_check_mode(char *argv);
 int			ft_check_flags(char **argv);
 int			ft_check_check_flags(char **argv);
 int			ft_check_args(int n, char **argv);
-
-int			ft_execute_operation(char *op, t_node **a, t_node **b,
-				t_benchmark *count);
-void		ft_clear_stdin_line(void);
-void		ft_read_opps(t_node **a, t_node **b, t_benchmark *count);
 
 void		ft_str_float(float dt);
 void		ft_strat_option(int n);
@@ -162,17 +153,13 @@ t_node		*find_min(t_node *stack);
 t_node		*find_max(t_node *stack);
 int			get_chunk_ranges(t_node *stack);
 
-void		ft_lowest_on_a(t_node	***a, t_node	***b, t_benchmark **count);
 void		ft_lowest_on_b(t_node ***a, t_node ***b, t_benchmark **count);
 void		ft_simple_sort(t_node **a, t_node **b, int n, t_benchmark *count);
 int			ft_get_index_pos(t_node *stack, int target);
-void		ft_rotate_to_top(t_node ***a, int pos,
-				int size, t_benchmark **count);
 
 void		ft_sort_five(t_node **a, t_node **b, int n, t_benchmark *count);
 void		ft_sort_three(t_node **a, int n, t_benchmark *count);
 void		ft_sort_two(t_node **a, int n, t_benchmark *count);
-void		ft_push_lowest(t_node **a, t_node **b, t_benchmark *count);
 
 void		ft_sort_five(t_node **a, t_node **b, int n, t_benchmark *count);
 void		ft_sort_three(t_node **a, int n, t_benchmark *count);

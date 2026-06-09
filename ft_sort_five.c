@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 15:45:44 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/06/09 16:04:14 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/09 16:32:19 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,12 @@ static void	ft_push_min_to_b(t_node ***a, t_node ***b,
 
 	if (pos <= size / 2)
 	{
-		while (*a != min_node)
+		while (**a != min_node)
 			ra(a, 0, count);
 	}
 	else
 	{
-		while (*a != min_node)
+		while (**a != min_node)
 			rra(a, 0, count);
 	}
 	pb(a, b, 0, count);
