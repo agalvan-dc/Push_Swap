@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bench.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caperale <caperale@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 12:58:37 by caperale          #+#    #+#             */
-/*   Updated: 2026/06/08 12:58:49 by caperale         ###   ########.fr       */
+/*   Updated: 2026/06/09 13:59:30 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_str_float(float dt)
 	dt *= 10000;
 	ft_putnbr_fd(dt / 100, 2);
 	write(2, ",", 1);
+	if ((int)dt % 100 < 10)
+		write(2, "0", 1);
 	ft_putnbr_fd(((int)dt % 100), 2);
 	write(2, "%", 1);
 }

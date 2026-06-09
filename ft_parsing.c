@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 05:17:41 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/06/08 18:28:15 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/09 16:25:18 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int	ft_check_duplicates(char **argv)
 
 void	ft_parse_modes(char **argv, t_node **a, t_node **b, int n)
 {
+	(*a) = ft_find_sort(a);
 	if (!n)
 	{
 		(*a)->parse = true;
@@ -73,6 +74,7 @@ void	ft_parse_options(int argc, char **argv, t_node **a, t_node **b)
 		{
 			if (ft_bench_option(argv[1], argv[2]))
 				ft_bench_bench(a);
+			(*a) = ft_find_sort(a);
 			ft_adaptative_sort(argv, a, b);
 		}
 		else if (argc == 3)

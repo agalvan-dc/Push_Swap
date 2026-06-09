@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 05:59:39 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/06/08 17:08:11 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/09 16:12:14 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_node	*ft_stacknew(int content, bool bench)
 	node->nbr = content;
 	node->above_median = false;
 	node->bench = bench;
+	node->low_sort = 0;
 	node->parse = false;
 	node->has_been_lowest = false;
 	node->index = 0;

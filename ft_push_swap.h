@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_push_swap.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caperale <caperale@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 08:10:32 by caperale          #+#    #+#             */
-/*   Updated: 2026/06/09 13:52:38 by caperale         ###   ########.fr       */
+/*   Updated: 2026/06/09 16:25:41 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_node
 	int					nbr;
 	int					index;
 	int					push_cost;
+	int					low_sort;
 	bool				has_been_lowest;
 	bool				above_median;
 	bool				bench;
@@ -172,5 +173,12 @@ void		ft_sort_five(t_node **a, t_node **b, int n, t_benchmark *count);
 void		ft_sort_three(t_node **a, int n, t_benchmark *count);
 void		ft_sort_two(t_node **a, int n, t_benchmark *count);
 void		ft_push_lowest(t_node **a, t_node **b, t_benchmark *count);
+
+void		ft_sort_five(t_node **a, t_node **b, int n, t_benchmark *count);
+void		ft_sort_three(t_node **a, int n, t_benchmark *count);
+void		ft_sort_two(t_node **a, int n, t_benchmark *count);
+t_node		*ft_find_sort(t_node **a);
+
+
 
 #endif

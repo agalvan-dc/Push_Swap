@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sorts.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caperale <caperale@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 12:48:51 by caperale          #+#    #+#             */
-/*   Updated: 2026/06/09 14:04:51 by caperale         ###   ########.fr       */
+/*   Updated: 2026/06/09 15:54:12 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_sort_two(t_node **a, int n, t_benchmark *count)
 	free(count);
 }
 
-void	ft_sort_three_if(t_node **a, t_benchmark *count)
+static void	ft_sort_three_if(t_node **a, t_benchmark *count)
 {
 	if ((*a)->nbr > (*a)->next->nbr && (*a)->nbr < (*a)->next->next->nbr)
 		sa(&a, 0, &count);

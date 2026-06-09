@@ -5,24 +5,25 @@ CFLAGS = -Wall -Wextra -Werror
 OPERATIONS_PATH = operations/
 
 COMMON_FILES = $(OPERATIONS_PATH)ft_push.c \
-               $(OPERATIONS_PATH)ft_swap.c \
-               $(OPERATIONS_PATH)ft_rotate.c \
-               $(OPERATIONS_PATH)ft_reverse_rotate.c \
-               ft_bench.c \
-               ft_check.c \
-               ft_chunk_sort_utils.c \
-               ft_chunk_sort.c \
-               ft_costs.c \
-               ft_disorder_tendency.c \
-               ft_free.c \
-               ft_init_sort.c \
-               ft_init.c \
-               ft_ksort.c \
-               ft_lists.c \
-               ft_parsing.c \
-               ft_push_swap_utils.c \
-               ft_simple_sort.c \
-               ft_sorts.c \
+				$(OPERATIONS_PATH)ft_swap.c \
+				$(OPERATIONS_PATH)ft_rotate.c \
+				$(OPERATIONS_PATH)ft_reverse_rotate.c \
+				ft_bench.c \
+				ft_check.c \
+				ft_chunk_sort_utils.c \
+				ft_chunk_sort.c \
+				ft_costs.c \
+				ft_disorder_tendency.c \
+				ft_free.c \
+				ft_init_sort.c \
+				ft_init.c \
+				ft_ksort.c \
+				ft_lists.c \
+				ft_parsing.c \
+				ft_push_swap_utils.c \
+				ft_simple_sort.c \
+				ft_sorts.c \
+				ft_sort_five.c \
 
 PUSH_SWAP_FILES = ft_push_swap.c
 
@@ -49,6 +50,7 @@ clean:
 
 fclean: clean
 	make -C $(LIBFT_PATH) fclean
+	rm -f $(LIBFT_LIB)
 	rm -f $(NAME)
 
 re: fclean all

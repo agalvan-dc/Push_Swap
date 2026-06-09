@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 21:34:15 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/06/08 17:34:48 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/09 16:11:36 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,21 @@ void	ft_parsing_selection(char **argv, t_node **a, t_node **b)
 
 void	ft_adaptative_sort(char **argv, t_node **a, t_node **b)
 {
-	if (ft_disorder_tendency(argv) < 0.2)
-		ft_simple_sort(a, b, 4, ft_init_bench(*a));
-	else if (ft_disorder_tendency(argv) < 0.5)
-		ft_chunk_sort(a, b, 5, ft_init_bench(*a));
+	if ((*a)->low_sort == 1)
+		ft_sort_two(a, 0, ft_init_bench(*a));
+	else if ((*a)->low_sort == 2)
+		ft_sort_three(a, 0, ft_init_bench(*a));
+	else if ((*a)->low_sort == 3)
+		ft_sort_five(a, b, 0, ft_init_bench(*a));
 	else
-		ft_ksort(a, b, 6, ft_init_bench(*a));
+	{
+		if (ft_disorder_tendency(argv) < 0.2)
+			ft_simple_sort(a, b, 4, ft_init_bench(*a));
+		else if (ft_disorder_tendency(argv) < 0.5)
+			ft_chunk_sort(a, b, 5, ft_init_bench(*a));
+		else
+			ft_ksort(a, b, 6, ft_init_bench(*a));
+	}
 }
 
 int	ft_bench_option(char *s1, char *s2)
