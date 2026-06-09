@@ -22,6 +22,7 @@ COMMON_FILES = $(OPERATIONS_PATH)ft_push.c \
                ft_parsing.c \
                ft_push_swap_utils.c \
                ft_simple_sort.c \
+               ft_sorts.c \
 
 PUSH_SWAP_FILES = ft_push_swap.c
 

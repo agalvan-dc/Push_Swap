@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_push_swap.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: caperale <caperale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 08:10:32 by caperale          #+#    #+#             */
-/*   Updated: 2026/06/08 17:05:09 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/09 13:52:38 by caperale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ void		ft_move_node_to_top(t_node ***stack, t_node *target,
 				bool above_median, t_benchmark **count);
 void		ft_move_node_to_top_b(t_node ***b, t_node *target,
 				bool above_median, t_benchmark **count);
-void		ft_bench_launch();
+void		ft_bench_launch(void);
 
 void		ft_put_indexes(t_node **stack);
 t_node		*ft_find_from_chunk(t_node **stack, int chunk_range);
@@ -167,5 +167,10 @@ void		ft_simple_sort(t_node **a, t_node **b, int n, t_benchmark *count);
 int			ft_get_index_pos(t_node *stack, int target);
 void		ft_rotate_to_top(t_node ***a, int pos,
 				int size, t_benchmark **count);
+
+void		ft_sort_five(t_node **a, t_node **b, int n, t_benchmark *count);
+void		ft_sort_three(t_node **a, int n, t_benchmark *count);
+void		ft_sort_two(t_node **a, int n, t_benchmark *count);
+void		ft_push_lowest(t_node **a, t_node **b, t_benchmark *count);
 
 #endif

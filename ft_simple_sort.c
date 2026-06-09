@@ -3,14 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_simple_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: caperale <caperale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 12:21:35 by caperale          #+#    #+#             */
-/*   Updated: 2026/06/08 17:10:18 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/09 13:53:07 by caperale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
+
+int	ft_get_index_pos(t_node *stack, int target)
+{
+	int	pos;
+
+	pos = 0;
+	while (stack)
+	{
+		if (stack->index == target)
+			return (pos);
+		pos++;
+		stack = stack->next;
+	}
+	return (-1);
+}
 
 void	ft_lowest_on_b(t_node ***a, t_node ***b, t_benchmark **count)
 {
