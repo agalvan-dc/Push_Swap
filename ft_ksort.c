@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ksort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caperale <caperale@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 12:59:02 by caperale          #+#    #+#             */
-/*   Updated: 2026/06/08 12:59:04 by caperale         ###   ########.fr       */
+/*   Updated: 2026/06/10 15:40:11 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,7 @@ void	ft_arrange(t_node ***a, t_node ***b, t_benchmark **count)
 				sa(a, 0, count);
 		}
 		else if ((**b)->index == max_idx - 1)
-		{
 			pa(a, b, 0, count);
-		}
 		else
 		{
 			if (ft_above_median(target) == true)

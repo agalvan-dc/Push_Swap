@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 12:58:37 by caperale          #+#    #+#             */
-/*   Updated: 2026/06/09 19:45:53 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/10 19:14:58 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ void	ft_strat_option(int n)
 	else if (n == 3)
 		write(2, "Complex / O(nlog(n))\n", 21);
 	else if (n == 4)
-		write(2, "Adaptative / O(n^2)\n", 20);
+		write(2, "Adaptive / O(n^2)\n", 18);
 	else if (n == 5)
-		write(2, "Adaptative / O(n^3/2)\n", 22);
+		write(2, "Adaptive / O(n^3/2)\n", 20);
 	else if (n == 6)
-		write(2, "Adaptative / O(nlog(n)) \n", 25);
+		write(2, "Adaptive / O(nlog(n)) \n", 23);
 }
 
 void	ft_bench_ops(t_benchmark *count)
@@ -61,6 +61,7 @@ void	ft_bench_ops(t_benchmark *count)
 	ft_putnbr_fd(count->nrrb, 2);
 	write(2, " rrr: ", 6);
 	ft_putnbr_fd(count->nrrr, 2);
+	write(2, "\n", 1);
 }
 
 void	ft_bench(int n, t_benchmark *count)

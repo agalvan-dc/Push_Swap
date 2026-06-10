@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 07:41:45 by caperale          #+#    #+#             */
-/*   Updated: 2026/06/09 18:26:06 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/10 16:17:42 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,23 @@ void	ft_push_best_candidate(t_chunk *chunk)
 	int	hold_first;
 	int	hold_second;
 
+	hold_first = -1;
+	hold_second = -1;
 	first_cost = ft_cost_of_push_on_first(
 			**chunk->a, chunk->chunk_range, &hold_first);
 	second_cost = ft_cost_of_push_on_second(
 			**chunk->a, chunk->chunk_range, &hold_second);
-	if (first_cost <= second_cost)
+	if (second_cost == -1 || (first_cost != -1 && first_cost <= second_cost))
 	{
+		if (hold_first == -1)
+			return ;
 		ft_move_first_to_top(chunk->a, hold_first, chunk->count);
 		pb(chunk->b, chunk->a, 0, chunk->count);
 	}
 	else
 	{
+		if (hold_second == -1)
+			return ;
 		ft_move_second_to_top(chunk->a, hold_second, chunk->count);
 		pb(chunk->b, chunk->a, 0, chunk->count);
 	}

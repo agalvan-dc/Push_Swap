@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 21:34:15 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/06/09 22:36:49 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/10 19:11:55 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_parsing_selection(char **argv, t_node **a, t_node **b)
 			ft_chunk_sort(a, b, 2, ft_init_bench(*a));
 		else if (!ft_strncmp(argv[1], "--complex", ft_strlen(argv[1])))
 			ft_ksort(a, b, 3, ft_init_bench(*a));
-		else if (!ft_strncmp(argv[1], "--adaptative", ft_strlen(argv[1])))
+		else if (!ft_strncmp(argv[1], "--adaptive", ft_strlen(argv[1])))
 			ft_parse_options(2, argv, a, b);
 		else
 			ft_adaptative_sort(argv, a, b);
@@ -33,7 +33,7 @@ void	ft_parsing_selection(char **argv, t_node **a, t_node **b)
 		ft_chunk_sort(a, b, 2, ft_init_bench(*a));
 	else if (!ft_strncmp(argv[2], "--complex", ft_strlen(argv[2])))
 		ft_ksort(a, b, 3, ft_init_bench(*a));
-	else if (!ft_strncmp(argv[2], "--adaptative", ft_strlen(argv[2])))
+	else if (!ft_strncmp(argv[2], "--adaptive", ft_strlen(argv[2])))
 		ft_parse_options(2, argv, a, b);
 	else
 		ft_adaptative_sort(argv, a, b);

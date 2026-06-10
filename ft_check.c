@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 02:47:05 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/06/09 22:55:16 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/10 19:11:06 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ int	ft_check_mode(char *argv)
 		return (1);
 	if (!(ft_strncmp(argv, "--complex", ft_strlen(argv))))
 		return (1);
-	if (!(ft_strncmp(argv, "--adaptative", ft_strlen(argv))))
+	if (!(ft_strncmp(argv, "--adaptive", ft_strlen(argv))))
 		return (1);
 	return (0);
 }
 
-int ft_check_flags(char **argv)
+int	ft_check_flags(char **argv)
 {
 	if (ft_check_mode(argv[1]) && ft_check_mode(argv[2]))
 		return (1);
@@ -65,14 +65,13 @@ int ft_check_flags(char **argv)
 	return (0);
 }
 
-int ft_check_all(char **argv)
+int	ft_check_all(char **argv)
 {
 	size_t	i;
 
 	i = ft_check_number_options(argv, 1, 1);
 	if (!(ft_strncmp(argv[1], argv[2], ft_strlen(argv[1]))))
 		return (0);
-
 	while (argv[i] != NULL)
 	{
 		if (!(ft_parse_num(argv[i])))

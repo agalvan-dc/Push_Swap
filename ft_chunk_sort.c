@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_chunk_sort.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caperale <caperale@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 03:31:17 by caperale          #+#    #+#             */
-/*   Updated: 2026/06/08 08:20:03 by caperale         ###   ########.fr       */
+/*   Updated: 2026/06/10 16:14:52 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_put_indexes(t_node **stack)
 	t_node	*compare;
 	int		index;
 
-	if (!stack || !*stack || !*stack)
+	if (!stack || !*stack)
 		return ;
 	current = *stack;
 	while (current)
@@ -98,7 +98,6 @@ void	ft_chunk_sort(t_node **a, t_node **b, int n, t_benchmark *count)
 {
 	int	ret;
 
-	ft_put_indexes(a);
 	ret = ft_chunk_sort_loop(&a, &b, &count);
 	if (ret)
 	{

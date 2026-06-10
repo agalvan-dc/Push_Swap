@@ -6,7 +6,7 @@
 /*   By: agalvan- <agalvan-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 05:17:41 by agalvan-          #+#    #+#             */
-/*   Updated: 2026/06/09 22:45:37 by agalvan-         ###   ########.fr       */
+/*   Updated: 2026/06/10 15:34:56 by agalvan-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,10 +100,10 @@ int	ft_parse_num(char *argv)
 	size_t	j;
 
 	j = 0;
-	if (argv[j] == '-')
+	if (argv[j] == '-' && (argv[j + 1] >= '0' && argv[j + 1] <= '9'))
 		j++;
-	if (argv[j] == '+')
-		return (0);
+	if (argv[j] == '+' && (argv[j + 1] >= '0' && argv[j + 1] <= '9'))
+		j++;
 	while (argv[j])
 	{
 		if (argv[j] && !(argv[j] >= '0' && argv[j] <= '9'))
