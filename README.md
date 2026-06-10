@@ -1,11 +1,3 @@
-¡Claro que sí! Tienes un README súper sólido y bien estructurado. Entiendo perfectamente lo que necesitas: el *subject* exige explícitamente documentar la justificación de los umbrales del modo adaptativo, sus técnicas internas y el análisis de complejidad.
-
-Para que cumpla al 100% con la sección **VI.3.3** del documento, he añadido la explicación del **Índice de Desorden** y he creado un cuarto punto dentro de la justificación de los algoritmos usando una tabla para evitar anidamientos (y mantenerlo visualmente muy limpio).
-
-Aquí tienes el archivo actualizado listo para copiar y pegar:
-
----
-
 *Este proyecto ha sido creado como parte del currículo de 42 por agalvan-, caperale.*
 
 # Push_swap
