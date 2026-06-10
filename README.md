@@ -25,7 +25,6 @@ El núcleo del proyecto utiliza un enfoque híbrido y adaptativo. Dependiendo de
 
 ### 1. Simple Sort (Para inputs pequeños: ≤ 5 elementos)
 
-* 
 **Complejidad Temporal:** $O(n^2)$ en el peor de los casos.
 
 
@@ -34,7 +33,6 @@ El núcleo del proyecto utiliza un enfoque híbrido y adaptativo. Dependiendo de
 
 ### 2. Chunk Sort (Para inputs medianos: ≈ 100 elementos)
 
-* 
 **Complejidad Temporal:** $O(n\sqrt{n})$.
 
 
@@ -45,7 +43,6 @@ El núcleo del proyecto utiliza un enfoque híbrido y adaptativo. Dependiendo de
 
 ### 3. Ksort / Estrategia Compleja (Para inputs grandes: ≥ 500 elementos)
 
-* 
 **Complejidad Temporal:** $O(n \log n)$.
 
 
@@ -56,11 +53,9 @@ El núcleo del proyecto utiliza un enfoque híbrido y adaptativo. Dependiendo de
 
 ### 4. Algoritmo Adaptativo (Modo por defecto: `--adaptive`)
 
-* 
 **Explicación del Índice de Desorden:** Antes de realizar ningún movimiento, el programa calcula el nivel de desorden inicial de la pila A comparando todos los pares posibles de números. Cada vez que un número mayor aparece antes que uno menor, se contabiliza como un error. Este índice es un valor entre 0 (totalmente ordenado) y 1 (desorden absoluto).
 
 
-* 
 **Justificación de Umbrales y Complejidad:** El modo adaptativo selecciona el motor interno de ordenación basándose estrictamente en este cálculo inicial para garantizar la máxima eficiencia de operaciones. Los umbrales definidos cumplen con los requisitos del modelo de Push_swap:
 
 
@@ -69,19 +64,19 @@ El núcleo del proyecto utiliza un enfoque híbrido y adaptativo. Dependiendo de
 | --- | --- | --- | --- |
 | **Bajo** | Desorden < 0,2 
 
- | <br>$O(n)$ 
+ | <br>$O(n^2)$
 
- | Resolución lineal / Inserción directa |
+| Resolución lineal / Inserción directa |
 | **Medio** | 0,2 ≤ Desorden < 0,5 
 
  | <br>$O(n\sqrt{n})$ 
 
- | Chunk Sort (Algoritmo intermedio) |
+| Chunk Sort (Algoritmo intermedio) |
 | **Alto** | Desorden ≥ 0,5 
 
- | <br>$O(n \log n)$ 
+ <br>$O(n \log n)$ 
 
- | Ksort (Algoritmo complejo) |
+| Ksort (Algoritmo complejo) |
 
 ---
 
@@ -152,5 +147,4 @@ Permite analizar métricas de desorden inicial y el comportamiento adaptativo in
 En este proyecto se ha utilizado Inteligencia Artificial como herramienta de soporte técnico en las siguientes tareas específicas:
 
 * **Cumplimiento Norminette:** Optimización sintáctica para adaptar funciones extensas al estándar de codificación exigido por la escuela sin perder legibilidad ni rendimiento.
-* 
-**Redacción y Documentación (README.md):** Estructuración, síntesis de las responsabilidades del equipo y redacción técnica de este documento para cumplir estrictamente con las directrices y requisitos de entrega solicitados en el currículo.
+* **Redacción y Documentación (README.md):** Estructuración, síntesis de las responsabilidades del equipo y redacción técnica de este documento para cumplir estrictamente con las directrices y requisitos de entrega solicitados en el currículo.
